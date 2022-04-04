@@ -12,6 +12,10 @@ Trip.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    trip_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     company_id: {
       type: DataTypes.INTEGER,
       references: {
