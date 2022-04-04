@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User } = require("../../../models");
 
+// User signup route
 router.post("/signup", async (req, res) => {
   console.log("signup route hit");
   console.log(req.body);
@@ -8,6 +9,7 @@ router.post("/signup", async (req, res) => {
     const userData = await User.create(req.body);
     const user = userData.get({ plain: true });
     console.log("User Data: " + user);
+    // @TODO - add session start functionality
     res.json(userData);
     // req.session.save(() => {
     //   req.session.user_id = userData.id;
@@ -20,6 +22,7 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+// User login route
 router.post("/login", async (req, res) => {
   console.log(req.body);
   try {
@@ -38,6 +41,7 @@ router.post("/login", async (req, res) => {
         .json({ message: "Incorrect email or password, please try again" });
       return;
     }
+    // @TODO Add session start functionality
     res.json(userData);
     // req.session.save(() => {
     //   req.session.user_id = userData.id;
@@ -49,6 +53,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// logout function
 router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

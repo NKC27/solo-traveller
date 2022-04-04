@@ -3,6 +3,6 @@ const companyRoutes = require("./company");
 const travellerRoutes = require("./traveller");
 
 router.use("/users", travellerRoutes);
-router.use("/companies", companyRoutes);
+router.use("/admin", companyRoutes);
 
 module.exports = router;
