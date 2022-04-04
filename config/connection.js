@@ -11,6 +11,7 @@ if (process.env.JAWSDB_URL) {
     process.env.DB_USER,
     process.env.DB_PASSWORD,
     {
+      //@TODO: change to "localhost"
       host: "127.0.0.1",
       dialect: "mysql",
       port: 3306,
