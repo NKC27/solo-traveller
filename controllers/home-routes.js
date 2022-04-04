@@ -1,5 +1,13 @@
-// const router = require("express").Router();
-// const { Trip, User } = require("../models");
-// const withAuth = require("../utils/auth");
+const router = require("express").Router();
+const { Trip, User } = require("../models");
+const withAuth = require("../utils/auth");
 
-// module.exports = router;
+router.get("/", async (req, res) => {
+  try {
+    res.render("homepage");
+  } catch {
+    res.status(500).json(err);
+  }
+});
+
+module.exports = router;
