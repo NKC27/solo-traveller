@@ -4,15 +4,6 @@ const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
-    res.render("homepage");
-  } catch {
-    res.status(500).json(err);
-  }
-});
-
-router.get("/dashboard", async (req, res) => {
-  try {
-    //
     const tripData = await Trip.findAll({
       include: [
         {
@@ -24,8 +15,18 @@ router.get("/dashboard", async (req, res) => {
 
     // Serialize data so the template can read it
     const trips = tripData.map((trip) => trip.get({ plain: true }));
+    res.render("homepage", { logged_in: req.session.logged_in, trips });
+  } catch {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/dashboard", async (req, res) => {
+  try {
     //
-    res.render("dashboard", { logged_in: req.session.logged_in, trips });
+
+    //
+    res.render("dashboard", { logged_in: req.session.logged_in });
   } catch {
     res.status(500).json(err);
   }
@@ -33,7 +34,16 @@ router.get("/dashboard", async (req, res) => {
 
 router.get("/company-dashboard", async (req, res) => {
   try {
-    res.render("companyDashboard", { logged_in: req.session.logged_in });
+    const companyData = await Company.findByPk(req.session.user_id, {
+      attributes: { exclude: ["password"] },
+      include: [{ model: Trip }],
+    });
+
+    const company = companyData.get({ plain: true });
+    res.render("companyDashboard", {
+      logged_in: req.session.logged_in,
+      ...company,
+    });
   } catch {
     res.status(500).json(err);
   }
