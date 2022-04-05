@@ -10,6 +10,14 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/dashboard", async (req, res) => {
+  try {
+    res.render("dashboard");
+  } catch {
+    res.status(500).json(err);
+  }
+});
+
 router.get("/login-form", async (req, res) => {
   try {
     // console.log("login form hit");
