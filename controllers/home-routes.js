@@ -18,6 +18,14 @@ router.get("/dashboard", async (req, res) => {
   }
 });
 
+router.get("/company-dashboard", async (req, res) => {
+  try {
+    res.render("companyDashboard", { logged_in: req.session.logged_in });
+  } catch {
+    res.status(500).json(err);
+  }
+});
+
 router.get("/login-form", async (req, res) => {
   try {
     // console.log("login form hit");

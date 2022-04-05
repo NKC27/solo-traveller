@@ -17,7 +17,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/dashboard");
+      document.location.replace("/company-dashboard");
     } else {
       alert(response.statusText);
     }

@@ -13,9 +13,9 @@ router.post("/signup", async (req, res) => {
     req.session.save(() => {
       req.session.user_id = companyData.id;
       req.session.logged_in = true;
-      res.status(200).json(userData);
+      res.status(200).json(companyData);
     });
-    res.json(companyData);
+    // res.json(companyData);
   } catch (err) {
     res.status(400).json(err);
   }
