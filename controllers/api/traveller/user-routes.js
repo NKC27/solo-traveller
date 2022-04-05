@@ -24,6 +24,7 @@ router.post("/signup", async (req, res) => {
 
 // User login route
 router.post("/login", async (req, res) => {
+  console.log("login route");
   console.log(req.body);
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -42,6 +43,7 @@ router.post("/login", async (req, res) => {
       return;
     }
     // @TODO Add session start functionality
+    console.log(userData);
     res.json(userData);
     // req.session.save(() => {
     //   req.session.user_id = userData.id;

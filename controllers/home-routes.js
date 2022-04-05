@@ -10,4 +10,21 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/login-form", async (req, res) => {
+  try {
+    // console.log("login form hit");
+    res.render("userLogin");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.get("/signup-form", async (req, res) => {
+  try {
+    res.render("userSignup");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;
