@@ -29,6 +29,9 @@ router.get("/company-dashboard", async (req, res) => {
 router.get("/login-form", async (req, res) => {
   try {
     // console.log("login form hit");
+    if (req.session.logged_in) {
+      res.redirect("/dashboard");
+    }
     res.render("userLogin");
   } catch (error) {
     res.status(500).json(error);
@@ -37,6 +40,9 @@ router.get("/login-form", async (req, res) => {
 
 router.get("/signup-form", async (req, res) => {
   try {
+    if (req.session.logged_in) {
+      res.redirect("/dashboard");
+    }
     res.render("userSignup");
   } catch (error) {
     res.status(500).json(error);
@@ -45,6 +51,9 @@ router.get("/signup-form", async (req, res) => {
 
 router.get("/company-signup-form", async (req, res) => {
   try {
+    if (req.session.logged_in) {
+      res.redirect("/company-dashboard");
+    }
     res.render("companySignup");
   } catch (error) {
     res.status(500).json(error);
@@ -53,6 +62,9 @@ router.get("/company-signup-form", async (req, res) => {
 
 router.get("/company-login-form", async (req, res) => {
   try {
+    if (req.session.logged_in) {
+      res.redirect("/company-dashboard");
+    }
     res.render("companyLogin");
   } catch (error) {
     res.status(500).json(error);
