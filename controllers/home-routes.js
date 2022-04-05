@@ -27,4 +27,20 @@ router.get("/signup-form", async (req, res) => {
   }
 });
 
+router.get("/company-signup-form", async (req, res) => {
+  try {
+    res.render("companySignup");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.get("/company-login-form", async (req, res) => {
+  try {
+    res.render("companyLogin");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;
