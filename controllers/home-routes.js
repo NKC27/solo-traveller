@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Trip, User } = require("../models");
+const { Trip, User, Company } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
@@ -12,7 +12,20 @@ router.get("/", async (req, res) => {
 
 router.get("/dashboard", async (req, res) => {
   try {
-    res.render("dashboard", { logged_in: req.session.logged_in });
+    //
+    const tripData = await Trip.findAll({
+      include: [
+        {
+          model: Company,
+          attributes: ["user_name"],
+        },
+      ],
+    });
+
+    // Serialize data so the template can read it
+    const trips = tripData.map((trip) => trip.get({ plain: true }));
+    //
+    res.render("dashboard", { logged_in: req.session.logged_in, trips });
   } catch {
     res.status(500).json(err);
   }
