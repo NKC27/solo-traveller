@@ -10,13 +10,13 @@ router.post("/signup", async (req, res) => {
     const user = userData.get({ plain: true });
     console.log("User Data: " + user);
     // @TODO - add session start functionality
-    res.json(userData);
-    // req.session.save(() => {
-    //   req.session.user_id = userData.id;
-    //   req.session.logged_in = true;
-    //   res.json(userData);
-    //   //   res.status(200).json(userData);
-    // });
+    // res.json(userData);
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.json(userData);
+      //   res.status(200).json(userData);
+    });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -44,12 +44,12 @@ router.post("/login", async (req, res) => {
     }
     // @TODO Add session start functionality
     console.log(userData);
-    res.json(userData);
-    // req.session.save(() => {
-    //   req.session.user_id = userData.id;
-    //   req.session.logged_in = true;
-    //   res.status(200).json(userData);
-    // });
+    // res.json(userData);
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.status(200).json(userData);
+    });
   } catch (err) {
     res.status(400).json(err);
   }

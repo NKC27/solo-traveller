@@ -10,6 +10,11 @@ router.post("/signup", async (req, res) => {
     const companyData = await Company.create(req.body);
     const company = companyData.get({ plain: true });
     console.log("Company Data: " + company);
+    req.session.save(() => {
+      req.session.user_id = companyData.id;
+      req.session.logged_in = true;
+      res.status(200).json(userData);
+    });
     res.json(companyData);
   } catch (err) {
     res.status(400).json(err);
@@ -37,11 +42,11 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    // req.session.save(() => {
-    //   req.session.user_id = userData.id;
-    //   req.session.logged_in = true;
-    //   res.status(200).json(userData);
-    // });
+    req.session.save(() => {
+      req.session.user_id = companyData.id;
+      req.session.logged_in = true;
+      res.status(200).json(userData);
+    });
     res.json(companyData);
   } catch (err) {
     res.status(400).json(err);

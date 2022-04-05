@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
 
 router.get("/dashboard", async (req, res) => {
   try {
-    res.render("dashboard");
+    res.render("dashboard", { logged_in: req.session.logged_in });
   } catch {
     res.status(500).json(err);
   }
@@ -48,6 +48,16 @@ router.get("/company-login-form", async (req, res) => {
     res.render("companyLogin");
   } catch (error) {
     res.status(500).json(error);
+  }
+});
+
+router.post("/logout", (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
   }
 });
 
