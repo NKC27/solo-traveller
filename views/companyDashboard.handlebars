@@ -4,6 +4,12 @@
 
 {{/if}}
 
+{{#if companyAdmin}}
+<h1>You are a company admin</h1>
+{{else}}
+<h1>you are not a company admin</h1>
+{{/if}}
+
 {{#each trips as |trip|}}
 <main class="container">
   <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">

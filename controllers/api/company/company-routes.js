@@ -11,7 +11,7 @@ router.post("/signup", async (req, res) => {
     const company = companyData.get({ plain: true });
     console.log("Company Data: " + company);
     req.session.save(() => {
-      req.session.user_id = companyData.id;
+      req.session.company_id = companyData.id;
       req.session.logged_in = true;
       res.status(200).json(companyData);
     });
@@ -43,7 +43,7 @@ router.post("/login", async (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.user_id = companyData.id;
+      req.session.company_id = companyData.id;
       req.session.logged_in = true;
       res.status(200).json(companyData);
     });
