@@ -18,7 +18,6 @@ Trip.belongsToMany(User, {
     model: TripUser,
     unique: false,
   },
-  as: "Trip",
 });
 
 User.belongsToMany(Trip, {
@@ -26,7 +25,6 @@ User.belongsToMany(Trip, {
     model: TripUser,
     unique: false,
   },
-  as: "Traveller",
 });
 
-module.exports = { User, Trip, Company };
+module.exports = { User, Trip, Company, TripUser };
