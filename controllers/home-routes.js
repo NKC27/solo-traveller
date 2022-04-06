@@ -2,6 +2,7 @@ const router = require("express").Router();
 // const { where } = require("sequelize/types");
 const { Trip, User, Company, TripUser } = require("../models");
 const withAuth = require("../utils/auth");
+const { isAdmin } = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   try {
@@ -63,23 +64,61 @@ router.get("/dashboard", async (req, res) => {
   }
 });
 
-router.get("/company-dashboard", async (req, res) => {
+// Route for any kind of user to access any company dashboard
+router.get("/company-dashboard/:id", async (req, res) => {
   try {
+    console.log("company dash");
     if (!req.session.logged_in) {
       res.redirect("/login-form");
       return;
     }
-    const companyData = await Company.findByPk(req.session.user_id, {
+    console.log("logged in");
+    console.log(req.session.company_id);
+    console.log(req.params.id);
+    let companyAdmin = isAdmin(req.session.company_id, req.params.id);
+
+    console.log(companyAdmin);
+    const companyData = await Company.findByPk(req.params.id, {
       attributes: { exclude: ["password"] },
       include: [{ model: Trip }],
     });
-
+    console.log(companyData);
     const company = companyData.get({ plain: true });
+    console.log(company);
     res.render("companyDashboard", {
       logged_in: req.session.logged_in,
       ...company,
+      companyAdmin,
     });
-  } catch {
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Route for logged in company to access their own dashboard
+router.get("/company-dashboard", async (req, res) => {
+  try {
+    console.log("company dash");
+    if (!req.session.logged_in) {
+      res.redirect("/login-form");
+      return;
+    }
+
+    let companyAdmin = isAdmin(req.session.company_id, req.session.company_id);
+    console.log(companyAdmin);
+    const companyData = await Company.findByPk(req.session.company_id, {
+      attributes: { exclude: ["password"] },
+      include: [{ model: Trip }],
+    });
+    console.log(companyData);
+    const company = companyData.get({ plain: true });
+    console.log(company);
+    res.render("companyDashboard", {
+      logged_in: req.session.logged_in,
+      ...company,
+      companyAdmin,
+    });
+  } catch (err) {
     res.status(500).json(err);
   }
 });
