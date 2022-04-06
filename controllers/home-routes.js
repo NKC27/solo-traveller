@@ -1,5 +1,6 @@
 const router = require("express").Router();
-const { Trip, User, Company } = require("../models");
+// const { where } = require("sequelize/types");
+const { Trip, User, Company, TripUser } = require("../models");
 const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
@@ -25,15 +26,49 @@ router.get("/dashboard", async (req, res) => {
   try {
     //
 
-    //
-    res.render("dashboard", { logged_in: req.session.logged_in });
-  } catch {
+    console.log(req.session);
+    if (!req.session.logged_in) {
+      res.redirect("/login-form");
+      return;
+    }
+    console.log(req.headers);
+
+    const tripData = await Trip.findAll({
+      include: {
+        model: User,
+      },
+    });
+    // userTrips = array of all trips
+    const userTrips = tripData.map((trip) => trip.get({ plain: true }));
+    console.log(userTrips);
+
+    // myTrips is = to an array of all trips where users contains a user with an id === req.session.user_id
+    const myTrips = userTrips.filter((trip) => {
+      console.log("trip");
+      console.log(trip);
+      return !trip.users.every((user, i, arr) => {
+        console.log("User");
+        console.log(user);
+        return user.id !== req.session.user_id;
+      });
+    });
+
+    // Render user dashboard with logged_in variablle and myTrips array
+    return res.render("dashboard", {
+      logged_in: req.session.logged_in,
+      myTrips,
+    });
+  } catch (err) {
     res.status(500).json(err);
   }
 });
 
 router.get("/company-dashboard", async (req, res) => {
   try {
+    if (!req.session.logged_in) {
+      res.redirect("/login-form");
+      return;
+    }
     const companyData = await Company.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
       include: [{ model: Trip }],
