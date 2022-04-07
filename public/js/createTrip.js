@@ -1,18 +1,18 @@
 const createForm = document.getElementById("create-form");
 console.log("javascript");
-updateForm.addEventListener("submit", async (event) => {
+createForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   console.log("event listener");
-  const tripName = document.getElementById("trip-name").value.trim();
-  const tripLink = document.getElementById("trip-link").value.trim();
-  const imgSrc = document.getElementById("img-src").value.trim();
-  if (title && body) {
+  const tripName = document.getElementById("trip-name");
+  const tripLink = document.getElementById("trip-link");
+  const imgSrc = document.getElementById("img-src");
+  if (tripName && tripLink && imgSrc) {
     const response = await fetch("/api/trip/create", {
       method: "POST",
       body: JSON.stringify({
-        trip_name: tripName,
-        trip_link: tripLink,
-        img_src: imgSrc,
+        trip_name: tripName.value,
+        trip_link: tripLink.value,
+        img_src: imgSrc.value,
       }),
       headers: { "Content-Type": "application/json" },
     });

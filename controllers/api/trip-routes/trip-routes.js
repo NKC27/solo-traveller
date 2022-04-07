@@ -12,6 +12,7 @@ router.get("/new-trip", async (req, res) => {
 router.post("/create", async (req, res) => {
   try {
     console.log("create");
+    console.log(req.body);
     const newTrip = await Trip.create({
       ...req.body,
       company_id: req.session.company_id,
