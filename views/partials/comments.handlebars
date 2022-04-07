@@ -1,0 +1,12 @@
+<h1>User Comments</h1>
+
+{{#each this}}
+<div class="row mb-2 pt-5">
+    <div class="col-md-8">
+    <div class="row bg-dark text-white g-0 border border-dark rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <p>{{comment_text}}</p>
+        <small>{{trip.company.}} Posted by {{user.user_name}} on {{format_date created_at}}</small>
+    </div>
+    </div>
+{{/each}}
+</div>

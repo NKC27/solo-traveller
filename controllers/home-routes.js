@@ -4,6 +4,12 @@ const { Trip, User, Company, TripUser } = require("../models");
 const withAuth = require("../utils/auth");
 const { isAdmin } = require("../utils/auth");
 
+router.get("/homepage", async (req, res) => {
+  try {
+    res.render("generalHomepage", { layout: "other" });
+  } catch (error) {}
+});
+
 router.get("/", async (req, res) => {
   try {
     const tripData = await Trip.findAll({
