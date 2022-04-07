@@ -1,8 +1,17 @@
 const router = require("express").Router();
-const { Company, Trip, User, TripUser } = require("./../../models");
+const { Company, Trip, User, TripUser } = require("../../../models");
+
+router.get("/new-trip", async (req, res) => {
+  try {
+    res.status(200).render("createTrip", { logged_in: req.session.logged_in });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
 router.post("/create", async (req, res) => {
   try {
+    console.log("create");
     const newTrip = await Trip.create({
       ...req.body,
       company_id: req.session.company_id,
