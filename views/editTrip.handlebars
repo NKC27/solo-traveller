@@ -1,0 +1,16 @@
+<form action="" id="update-trip-form" data-id="{{trip.id}}">
+<div class="mb-3">
+  <label for="formGroupExampleInput"  class="form-label">Trip Name</label>
+  <input type="text" class="form-control" id="trip-name" placeholder="Example input placeholder" value="{{trip.trip_name}}">
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput2"  class="form-label">Trip Link</label>
+  <input type="text" class="form-control" id="trip-link" placeholder="Another input placeholder" value="{{trip.trip_link}}">
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput2"  class="form-label">Image Source</label>
+  <input type="text" class="form-control" id="img-src" placeholder="Another input placeholder" value="{{trip.img_src}}">
+</div>
+<button type="submit">Submit</button>
+</form>
+<script src="../../../js/editTrip.js"></script>

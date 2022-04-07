@@ -9,6 +9,19 @@ router.get("/new-trip", async (req, res) => {
   }
 });
 
+router.get("/edit/:id", async (req, res) => {
+  console.log("edit route");
+  const tripData = await Trip.findByPk(req.params.id, {
+    include: [
+      {
+        model: Company,
+      },
+    ],
+  });
+  const trip = tripData.get({ plain: true });
+  res.render("editTrip", { trip, logged_in: req.session.logged_in });
+});
+
 router.post("/create", async (req, res) => {
   try {
     console.log("create");
@@ -33,7 +46,7 @@ router.put("/:id", async (req, res) => {
     res
       //   .json("updated")
       .status(200)
-      .render("dashboard", { logged_in: req.session.logged_in });
+      .render("company-dashboard", { logged_in: req.session.logged_in });
   } catch (error) {
     res.status(500).json(error);
   }
