@@ -10,6 +10,8 @@
 <h1>you are not a company admin</h1>
 {{/if}}
 
+{{!-- @TODO add "add post" --}}
+
 {{#each trips as |trip|}}
 <main class="container">
   <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
@@ -17,10 +19,7 @@
       <h1 class="display-4 fst-italic">{{trip.trip_name}}</h1>
       <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
       <p class="lead mb-0"><a href="#" class="text-white fw-bold">{{trip.company.user_name}}</a></p>
-      {{#if companyAdmin}}
-      <button>Edit</button>
-      <button>Delete</button>
-      {{/if}}
+      {{!-- @TODO: add conditional edit and delete --}}
     </div>
   </div>
 
