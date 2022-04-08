@@ -13,7 +13,14 @@ goingBtn.addEventListener("click", async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/dashboard");
+      const nextResponse = await fetch("/api/trip/going", {
+        method: "PUT",
+        body: JSON.stringify({ trip_id }),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (nextResponse.ok) {
+        document.location.replace("/dashboard");
+      }
     } else {
       alert(response.statusText);
     }

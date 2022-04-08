@@ -35,6 +35,10 @@ Trip.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    traveller_num: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   },
   {
     hooks: {},

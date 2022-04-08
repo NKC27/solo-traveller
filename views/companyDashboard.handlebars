@@ -16,12 +16,12 @@
       <p class="lead mb-0"><a href="#" class="text-white fw-bold">{{trip.company.user_name}}</a></p>
       {{!-- For some reason conditionals aren't working, need to figure this out --}}
       {{!-- Guessing it may not be possible to use if statement within a loop, so may have to add a link to a single trip view --}}
-      {{#if companyAdmin}}
+      {{!-- {{#if companyAdmin}} --}}
    
       {{!-- Going button, will be connected to api/trip/going via POST request --}}
       <button id="going" data-id="{{trip.id}}" class="btn btn-primary">Going!</button>
       
-      {{/if}}
+      {{!-- {{/if}} --}}
       {{!-- @TODO: add conditional edit and delete --}}
     </div>
   </div>

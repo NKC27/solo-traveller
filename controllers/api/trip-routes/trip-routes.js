@@ -37,21 +37,6 @@ router.post("/create", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
-  try {
-    // @TODO check logged in company owns this trip
-    console.log("update route hit");
-    await Trip.update(req.body, { where: { id: req.params.id } });
-    console.log("trip update");
-    res
-      //   .json("updated")
-      .status(200)
-      .render("company-dashboard", { logged_in: req.session.logged_in });
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
 router.delete("/:id", async (req, res) => {
   try {
     const tripData = await Trip.destroy({
@@ -118,6 +103,54 @@ router.get("/going/:id", async (req, res) => {
     //   );
 
     res.status(200).json(travellers);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+// Updates the number of travellers column in a given trip
+// Need to add checks that will prevent a user from marking themselves as going multiple times
+router.put("/going", async (req, res) => {
+  try {
+    const tripData = await Trip.findByPk(req.body.trip_id, {
+      include: [
+        {
+          model: Company,
+        },
+      ],
+    });
+
+    const trip = tripData.get({ plain: true });
+
+    const usersGoing = trip.traveller_num;
+
+    const newTravellerNum = usersGoing + 1;
+
+    await Trip.update(
+      { traveller_num: newTravellerNum },
+      { where: { id: req.body.trip_id } }
+    );
+    // console.log(updatedPost);
+    res
+      .json(newTravellerNum)
+      //   .json("updated")
+      .status(200)
+      .render("dashboard", { logged_in: req.session.logged_in });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  try {
+    // @TODO check logged in company owns this trip
+    console.log("update route hit");
+    await Trip.update(req.body, { where: { id: req.params.id } });
+    console.log("trip update");
+    res
+      //   .json("updated")
+      .status(200)
+      .render("company-dashboard", { logged_in: req.session.logged_in });
   } catch (error) {
     res.status(500).json(error);
   }
