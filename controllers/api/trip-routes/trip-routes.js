@@ -73,4 +73,24 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+router.post("/going", async (req, res) => {
+  try {
+    if (!req.session.user_id) {
+      res.redirect("userLogin");
+    }
+
+    console.log(req.session.logged_in);
+    console.log(req.body);
+    const tripUserData = await TripUser.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
+
+    // console.log(tripUserData);
+    res.status(200).json(tripUserData);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;

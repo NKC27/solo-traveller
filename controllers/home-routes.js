@@ -78,7 +78,9 @@ router.get("/company-dashboard/:id", async (req, res) => {
       res.redirect("/login-form");
       return;
     }
-    console.log("logged in");
+    console.log("REQ");
+    console.log(req.session);
+
     console.log(req.session.company_id);
     console.log(req.params.id);
     let companyAdmin = isAdmin(req.session.company_id, req.params.id);
@@ -91,6 +93,8 @@ router.get("/company-dashboard/:id", async (req, res) => {
     console.log(companyData);
     const company = companyData.get({ plain: true });
     console.log(company);
+    console.log("LOGGED IN");
+    console.log(req.session.logged_in);
     res.render("companyDashboard", {
       logged_in: req.session.logged_in,
       ...company,

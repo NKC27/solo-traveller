@@ -30,7 +30,7 @@
 
   <body>
 
-    <header class="p-3 bg-dark text-white">
+    <header class="p-3 bg-dark text-white mb-5 custom-header">
       <div class="container">
         <div
           class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
@@ -39,12 +39,7 @@
             href="/"
             class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
           >
-            <img
-              width="250px"
-              height="auto"
-              src="/assets/TECH(1).png"
-              alt="Tech talk"
-            />
+          
             <svg
               class="bi me-2"
               width="40"
@@ -76,14 +71,18 @@
 
           <div class="text-end">
             {{! @TODO add conditional for displaying login/logout depending on whether logged_in set to true or false }}
+            <a href="/company-login-form">
             <button
               type="button"
               class="btn btn-outline-light bg-custom-blue me-2"
             >Company Login</button>
+            </a>
+            <a href="/homepage">
             <button
               type="button"
               class="btn btn-outline-light bg-custom-blue me-2"
             >Homepage</button>
+            </a>
             {{#if logged_in}}
               <button
                 type="button"
@@ -91,10 +90,10 @@
                 id="logout"
               >Logout</button>
             {{else}}
-              <button
+              <a href="/login-form"><button
                 type="button"
                 class="btn btn-outline-light bg-custom-blue me-2"
-              >User Login</button>
+              >User Login</button></a>
             {{/if}}
           </div>
         </div>
