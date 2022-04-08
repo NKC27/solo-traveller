@@ -93,4 +93,34 @@ router.post("/going", async (req, res) => {
   }
 });
 
+// This route returns an array of users who are marked as going on any given trip
+// Need to add checks that the logged in user is included in the returned array before this information can be returned to them
+router.get("/going/:id", async (req, res) => {
+  try {
+    console.log(req.params.id);
+    const tripData = await Trip.findByPk(req.params.id, {
+      include: {
+        model: User,
+      },
+    });
+    console.log(tripData);
+    // userTrips = array of all trips
+    const trip = tripData.get({ plain: true });
+    console.log("trip");
+    console.log(trip);
+    const travellers = trip.users;
+    // let travellers = []
+    // userTrips.forEach((trip) => {
+    //   // console.log("trip");
+    //   if(trip.id === req.params.id){
+    //     trip.users
+    //   }
+    //   );
+
+    res.status(200).json(travellers);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 module.exports = router;

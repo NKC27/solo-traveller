@@ -14,16 +14,22 @@
       <h1 class="display-4 fst-italic">{{trip.trip_name}}</h1>
       <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
       <p class="lead mb-0"><a href="#" class="text-white fw-bold">{{trip.company.user_name}}</a></p>
-      {{#unless companyAdmin}}
-      {{!-- {{#if logged_in}} --}}
+      {{!-- For some reason conditionals aren't working, need to figure this out --}}
+      {{!-- Guessing it may not be possible to use if statement within a loop, so may have to add a link to a single trip view --}}
+      {{#if companyAdmin}}
+   
       {{!-- Going button, will be connected to api/trip/going via POST request --}}
       <button id="going" data-id="{{trip.id}}" class="btn btn-primary">Going!</button>
-      {{!-- {{/if}} --}}
-      {{/unless}}
+      
+      {{/if}}
       {{!-- @TODO: add conditional edit and delete --}}
     </div>
   </div>
 
 {{/each}}
+
+{{#if logged_in}}
+<h1>you are logged in</h1>
+{{/if}}
 
 <script src="../../js/travellerGoing.js"></script>
