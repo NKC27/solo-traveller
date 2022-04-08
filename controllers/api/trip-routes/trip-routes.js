@@ -156,4 +156,22 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+router.get("/group/:id", async (req, res) => {
+  try {
+    console.log("trip group route hit");
+    const tripData = await Trip.findByPk(req.params.id, {
+      include: [
+        {
+          model: Company,
+        },
+      ],
+    });
+    const trip = tripData.get({ plain: true });
+
+    res.status(200).render("tripGroup", { trip });
+  } catch (error) {
+    res.status(500).json("Page not found");
+  }
+});
+
 module.exports = router;
