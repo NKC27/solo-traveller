@@ -133,7 +133,7 @@ header .nav li:last-child {
   border-radius: 30px;
   --bs-gutter-x: 0rem;
   --bs-gutter-y: 0rem;
-  box-shadow: 12px 12px 22px rgba(68, 68, 68, 0.616);
+  /* box-shadow: 12px 12px 22px rgba(68, 68, 68, 0.616); */
 }
 
 img {
@@ -185,4 +185,15 @@ img {
 
 .loghover:hover {
   color: rgb(19, 109, 211);
+}
+
+.btn3 {
+	border: 2px solid white;
+  outline: none;
+  height: 50px;
+  width: 50%;
+  background-color: transparent;
+  color: white;
+  border-radius: 30px;
+  font-weight: bold;
 }
