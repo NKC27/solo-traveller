@@ -102,7 +102,7 @@ router.get("/group/:id", async (req, res) => {
         },
         {
           model: Post,
-          include: [Comment, User],
+          include: [Comment],
         },
       ],
     });

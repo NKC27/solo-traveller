@@ -7,6 +7,7 @@ const companyData = require("./companyData.json");
 const tripUserData = require("./tripUserData.json");
 const TripUser = require("../models/TripUser");
 const postData = require("./postData.json");
+const commentData = require("./commentData.json");
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -32,6 +33,11 @@ const seedDatabase = async () => {
   });
 
   await Post.bulkCreate(postData, {
+    individualHooks: true,
+    returning: true,
+  });
+
+  await Comment.bulkCreate(commentData, {
     individualHooks: true,
     returning: true,
   });

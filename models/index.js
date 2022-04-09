@@ -27,6 +27,18 @@ Trip.hasMany(Post, {
   onDelete: "CASCADE",
 });
 
+User.hasMany(Post, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
+
+User.belongsToMany(Trip, {
+  through: {
+    model: TripUser,
+    unique: false,
+  },
+});
+
 Post.belongsTo(Trip, {
   foreignKey: "trip_id",
   onDelete: "CASCADE",
@@ -42,16 +54,9 @@ Post.hasMany(Comment, {
   onDelete: "CASCADE",
 });
 
-User.hasMany(Post, {
-  foreignKey: "user_id",
+Comment.belongsTo(Post, {
+  foreignKey: "post_id",
   onDelete: "CASCADE",
-});
-
-User.belongsToMany(Trip, {
-  through: {
-    model: TripUser,
-    unique: false,
-  },
 });
 
 module.exports = { User, Trip, Company, TripUser, Post, Comment };
