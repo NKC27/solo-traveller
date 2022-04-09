@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Company, Trip, User, TripUser } = require("../../../models");
+const { isGoing } = require("../../../utils/auth");
 
 router.get("/new-trip", async (req, res) => {
   try {
@@ -84,6 +85,36 @@ router.post("/going", async (req, res) => {
   }
 });
 
+router.get("/group/:id", async (req, res) => {
+  try {
+    const tripData = await Trip.findByPk(req.params.id, {
+      include: {
+        model: User,
+      },
+    });
+    console.log(tripData);
+    // userTrips = array of all trips
+    const trip = tripData.get({ plain: true });
+    console.log("trip");
+    console.log(trip);
+    const travellers = trip.users;
+    console.log("TRAVELLERS");
+    console.log(travellers);
+    const going = isGoing(travellers, req.session.user_id);
+    console.log(going);
+    if (!going) {
+      res.status(401).json({
+        message: "Please book onto this trip to view the trip group!",
+      });
+      return;
+    }
+
+    res.status(200).render("tripGroup", { trip });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
 // This route returns an array of users who are marked as going on any given trip
 // Need to add checks that the logged in user is included in the returned array before this information can be returned to them
 router.get("/going/:id", async (req, res) => {
@@ -163,22 +194,22 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.get("/group/:id", async (req, res) => {
-  try {
-    console.log("trip group route hit");
-    const tripData = await Trip.findByPk(req.params.id, {
-      include: [
-        {
-          model: Company,
-        },
-      ],
-    });
-    const trip = tripData.get({ plain: true });
+// router.get("/group/:id", async (req, res) => {
+//   try {
+//     console.log("trip group route hit");
+//     const tripData = await Trip.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: Company,
+//         },
+//       ],
+//     });
+//     const trip = tripData.get({ plain: true });
 
-    res.status(200).render("tripGroup", { trip });
-  } catch (error) {
-    res.status(500).json("Page not found");
-  }
-});
+//     res.status(200).render("tripGroup", { trip });
+//   } catch (error) {
+//     res.status(500).json("Page not found");
+//   }
+// });
 
 module.exports = router;
