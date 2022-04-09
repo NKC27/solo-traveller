@@ -2,6 +2,7 @@ const User = require("./User");
 const Company = require("./Company");
 const Trip = require("./Trip");
 const TripUser = require("./TripUser");
+const Post = require("./Post");
 
 Company.hasMany(Trip, {
   foreignKey: "company_id",
@@ -20,6 +21,26 @@ Trip.belongsToMany(User, {
   },
 });
 
+Trip.hasMany(Post, {
+  foreignKey: "trip_id",
+  onDelete: "CASCADE",
+});
+
+Post.belongsTo(Trip, {
+  foreignKey: "trip_id",
+  onDelete: "CASCADE",
+});
+
+Post.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
+
+User.hasMany(Post, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
+
 User.belongsToMany(Trip, {
   through: {
     model: TripUser,
@@ -27,4 +48,4 @@ User.belongsToMany(Trip, {
   },
 });
 
-module.exports = { User, Trip, Company, TripUser };
+module.exports = { User, Trip, Company, TripUser, Post };
