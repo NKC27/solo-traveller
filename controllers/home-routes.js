@@ -23,7 +23,12 @@ router.get("/", async (req, res) => {
 
     // Serialize data so the template can read it
     const trips = tripData.map((trip) => trip.get({ plain: true }));
-    res.render("homepage", { logged_in: req.session.logged_in, trips });
+    res.render("homepage", {
+      logged_in: req.session.logged_in,
+      trips,
+      user_id: req.session.user_id,
+      isOwnAdmin: req.session.isOwnAdmin,
+    });
   } catch {
     res.status(500).json(err);
   }
@@ -95,12 +100,13 @@ router.get("/company-dashboard/:id", async (req, res) => {
       include: [{ model: Trip }],
     });
     console.log(companyData);
-    const company = companyData.get({ plain: true });
+    const company = await companyData.get({ plain: true });
     console.log(company);
     console.log("LOGGED IN");
     console.log(req.session.logged_in);
     res.render("companyDashboard", {
       logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
       ...company,
       companyAdmin,
     });
@@ -125,7 +131,7 @@ router.get("/company-dashboard", async (req, res) => {
       include: [{ model: Trip }],
     });
     console.log(companyData);
-    const company = companyData.get({ plain: true });
+    const company = await companyData.get({ plain: true });
     console.log(company);
     res.render("companyDashboard", {
       logged_in: req.session.logged_in,
@@ -143,9 +149,11 @@ router.get("/login-form", async (req, res) => {
     // console.log("login form hit");
     if (req.session.company_id) {
       res.redirect("/company-dashboard");
+      return;
     }
     if (req.session.logged_in) {
       res.redirect("/dashboard");
+      return;
     }
     res.render("userLogin");
   } catch (error) {
@@ -177,7 +185,7 @@ router.get("/company-signup-form", async (req, res) => {
 
 router.get("/company-login-form", async (req, res) => {
   try {
-    if (req.session.logged_in) {
+    if (req.session.logged_in && req.session.company_id) {
       res.redirect("/company-dashboard");
     }
     res.render("companyLogin");

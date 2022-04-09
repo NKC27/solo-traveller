@@ -11,13 +11,20 @@
       <p class="lead my-3 roboto">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
       <p class="lead mb-0"><a href="#" class="text-white fw-bold roboto">{{company.user_name}}</a></p>
 
-      {{#if ../logged_in}}
-   
+      {{#if ../user_id}}
+   {{!-- {{#unless ../companyAdmin}} --}}
       {{!-- Going button, will be connected to api/trip/going via POST request --}}
       <button id="going" data-id="{{trip.id}}" class="btn btn-primary going roboto">Going!</button>
-      
+      {{!-- {{/unless}} --}}
       {{/if}}
       {{!-- @TODO: add conditional edit and delete --}}
+
+      {{#if ../companyAdmin}}
+   <a href="/api/trip/edit/{{id}}"> <button id="edit" data-id="{{trip.id}}" class="btn btn-success roboto">Edit</button> </a>
+   
+    <button data-id="{{trip.id}}" class="delete btn btn-danger roboto">Delete</button>
+    
+      {{/if}}
     </div>
   </div>
 
@@ -28,3 +35,4 @@
 {{/if}}
 </div>
 <script src="/js/travellerGoing.js"></script>
+<script src="/js/deleteTrip.js"></script>

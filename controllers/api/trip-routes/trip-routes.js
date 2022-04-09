@@ -39,20 +39,26 @@ router.post("/create", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    const tripData = await Trip.destroy({
+    console.log("DELETE ROUTE");
+    console.log(req.params.id);
+    console.log(req.session.company_id);
+    await Trip.destroy({
       where: {
         id: req.params.id,
         company_id: req.session.company_id,
       },
     });
-    console.log(tripData);
+    // console.log(tripData);
     // console.log("This is the post data" + postData);
-    if (!tripData) {
-      res.status(404).json({ message: "No Trip found with this id!" });
-      return;
-    }
-
-    res.status(200).render("dashboard", { logged_in: req.session.logged_in });
+    // if (!tripData) {
+    //   console.log("NO TRIP DATA");
+    //   res.status(404).json("No Trip found with this id!");
+    //   return;
+    // }
+    res
+      //   .json("updated")
+      .status(200)
+      .render("company-dashboard", { logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }

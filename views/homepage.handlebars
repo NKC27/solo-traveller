@@ -10,12 +10,12 @@
       <p class="lead mb-0"><a href="#" class="text-white fw-bold roboto">{{trip.company.user_name}}</a></p>
     </div>
     <p class="roboto">There are {{traveller_num}} travellers going on this trip</p>
-     {{#unless ../companyAdmin}}
-      {{#if ../logged_in}}
+    
+      {{#if ../user_id}}
       {{!-- Going button, will be connected to api/trip/going via POST request --}}
       <button  data-id="{{trip.id}}" class="btn btn-primary going roboto">Going!</button>
       {{/if}}
-      {{/unless}}
+     
   </div>
 {{/each}}
 </div>
