@@ -137,6 +137,9 @@ router.get("/company-dashboard", async (req, res) => {
 router.get("/login-form", async (req, res) => {
   try {
     // console.log("login form hit");
+    if (req.session.company_id) {
+      res.redirect("/company-dashboard");
+    }
     if (req.session.logged_in) {
       res.redirect("/dashboard");
     }
