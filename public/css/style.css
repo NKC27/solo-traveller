@@ -201,3 +201,7 @@ img {
 .roboto {
   font-family: Roboto;
 }
+
+.image-bg {
+  background-image: url("images/shifaaz-shamoon-okVXy9tG3KY-unsplash.jpg");
+}
