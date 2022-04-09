@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Post 1",
+    "body": "This is the first post",
+    "user_id": 3,
+    "trip_id": 1
+  },
+  {
+    "title": "Post 2",
+    "body": "This is the second post",
+    "user_id": 2,
+    "trip_id": 2
+  },
+  {
+    "title": "Post 3",
+    "body": "This is the third post",
+    "user_id": 1,
+    "trip_id": 3
+  }
+]
