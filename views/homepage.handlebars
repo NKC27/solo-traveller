@@ -1,22 +1,22 @@
-<h1 class="mb-5">HelloWorld</h1>
 
+<div class="container">
 {{#each trips as |trip|}}
 
 
-  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+  <div class="p-4 p-md-5 mb-4 text-dark rounded bg-white border border-dark">
     <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">{{trip.trip_name}}</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="#" class="text-white fw-bold">{{trip.company.user_name}}</a></p>
+      <h1 class="display-4 fst-italic roboto">{{trip.trip_name}}</h1>
+      <p class="lead my-3 roboto">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+      <p class="lead mb-0"><a href="#" class="text-white fw-bold roboto">{{trip.company.user_name}}</a></p>
     </div>
-    <p>There are {{traveller_num}} travellers going on this trip</p>
+    <p class="roboto">There are {{traveller_num}} travellers going on this trip</p>
      {{#unless ../companyAdmin}}
       {{#if ../logged_in}}
       {{!-- Going button, will be connected to api/trip/going via POST request --}}
-      <button id="going" data-id="{{trip.id}}" class="btn btn-primary">Going!</button>
+      <button  data-id="{{trip.id}}" class="btn btn-primary going roboto">Going!</button>
       {{/if}}
       {{/unless}}
   </div>
 {{/each}}
-
+</div>
 <script src="/js/travellerGoing.js"></script>

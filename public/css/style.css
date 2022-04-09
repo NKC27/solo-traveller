@@ -188,7 +188,7 @@ img {
 }
 
 .btn3 {
-	border: 2px solid white;
+  border: 2px solid white;
   outline: none;
   height: 50px;
   width: 50%;
@@ -196,4 +196,8 @@ img {
   color: white;
   border-radius: 30px;
   font-weight: bold;
+}
+
+.roboto {
+  font-family: Roboto;
 }

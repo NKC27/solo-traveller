@@ -1,24 +1,20 @@
 
-{{#if companyAdmin}}
-<h1>You are a company admin</h1>
-{{else}}
-<h1>you are not a company admin</h1>
-{{/if}}
+
 
 {{!-- @TODO add "add post" --}}
-
+<div class="container">
 {{#each trips as |trip|}}
 
-  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+  <div class="p-4 p-md-5 mb-4 text-dark rounded bg-white border border-dark">
     <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">{{trip_name}}</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="#" class="text-white fw-bold">{{company.user_name}}</a></p>
+      <h1 class="display-4 fst-italic roboto">{{trip_name}}</h1>
+      <p class="lead my-3 roboto">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+      <p class="lead mb-0"><a href="#" class="text-white fw-bold roboto">{{company.user_name}}</a></p>
 
       {{#if ../logged_in}}
    
       {{!-- Going button, will be connected to api/trip/going via POST request --}}
-      <button id="going" data-id="{{trip.id}}" class="btn btn-primary">Going!</button>
+      <button id="going" data-id="{{trip.id}}" class="btn btn-primary going roboto">Going!</button>
       
       {{/if}}
       {{!-- @TODO: add conditional edit and delete --}}
@@ -30,5 +26,5 @@
 {{#if logged_in}}
 <h1>you are logged in</h1>
 {{/if}}
-
+</div>
 <script src="/js/travellerGoing.js"></script>

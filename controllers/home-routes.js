@@ -60,10 +60,14 @@ router.get("/dashboard", async (req, res) => {
       });
     });
 
+    const userData = await User.findByPk(req.session.user_id);
+    const user = userData.get({ plain: true });
+
     // Render user dashboard with logged_in variablle and myTrips array
     return res.render("dashboard", {
       logged_in: req.session.logged_in,
       myTrips,
+      user,
     });
   } catch (err) {
     res.status(500).json(err);

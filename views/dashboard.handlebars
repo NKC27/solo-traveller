@@ -1,20 +1,23 @@
 
+
+<div class="container">
 {{#if logged_in}}
-<h1>{{user.user_name}}LOGGED IN</h1>
-{{else}}
-<h1>NOT LOGGED IN</h1>
+<h1 class="m-4">Welcome {{user.user_name}}</h1>
+
 {{/if}}
 
 
 {{#each myTrips as |trip|}}
 
-  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+  <div class="p-4 p-md-5 mb-4 text-dark rounded bg-white border border-dark col-8">
     <div class="col-md-6 px-0">
-      <h1 class="display-4 fst-italic">{{trip.trip_name}}</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="#" class="text-white fw-bold">{{trip.trip_link}}</a></p>
-      <p class="lead mb-0"><a href="/api/trip/group/{{id}}" class="text-white fw-bold">Trip Group</a></p>
+      <h1 class="display-4 fst-italic roboto">{{trip.trip_name}}</h1>
+      <p class="lead my-3 roboto">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+      <p class="lead mb-0"><a href="#" class="text-white fw-bold roboto">{{trip.trip_link}}</a></p>
+      <p class="lead mb-0"><a href="/api/trip/group/{{id}}" class="text-white fw-bold roboto">Trip Group</a></p>
     </div>
   </div>
 
 {{/each}}
+
+</div>
