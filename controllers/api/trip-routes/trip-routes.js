@@ -112,6 +112,7 @@ router.get("/going/:id", async (req, res) => {
 // Need to add checks that will prevent a user from marking themselves as going multiple times
 router.put("/going", async (req, res) => {
   try {
+    console.log("GOING ROUTE HIT");
     const tripData = await Trip.findByPk(req.body.trip_id, {
       include: [
         {

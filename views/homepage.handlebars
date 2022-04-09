@@ -9,13 +9,14 @@
       <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
       <p class="lead mb-0"><a href="#" class="text-white fw-bold">{{trip.company.user_name}}</a></p>
     </div>
-     {{#unless companyAdmin}}
-      {{!-- {{#if logged_in}} --}}
+    <p>There are {{traveller_num}} travellers going on this trip</p>
+     {{#unless ../companyAdmin}}
+      {{#if ../logged_in}}
       {{!-- Going button, will be connected to api/trip/going via POST request --}}
       <button id="going" data-id="{{trip.id}}" class="btn btn-primary">Going!</button>
-      {{!-- {{/if}} --}}
+      {{/if}}
       {{/unless}}
   </div>
 {{/each}}
 
-<script src="../../js/travellerGoing.js"></script>
+<script src="/js/travellerGoing.js"></script>

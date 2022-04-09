@@ -125,6 +125,7 @@ router.get("/company-dashboard", async (req, res) => {
     console.log(company);
     res.render("companyDashboard", {
       logged_in: req.session.logged_in,
+      isOwnAdmin: req.session.isOwnAdmin,
       ...company,
       companyAdmin,
     });

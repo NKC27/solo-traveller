@@ -44,10 +44,16 @@ router.post("/login", async (req, res) => {
 
     req.session.save(() => {
       req.session.company_id = companyData.id;
+      req.session.isOwnAdmin = true;
       req.session.logged_in = true;
       res.status(200).json(companyData);
     });
-    // res.json(companyData);
+    // res
+    //   .status(200)
+    //   .render("companyDashboard", {
+    //     logged_in: req.session.logged_in,
+    //     isOwnAdmin: req.session.isOwnAdmin,
+    //   });
   } catch (err) {
     res.status(400).json(err);
   }
