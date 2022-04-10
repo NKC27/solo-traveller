@@ -3,7 +3,7 @@ const Company = require("./Company");
 const Trip = require("./Trip");
 const TripUser = require("./TripUser");
 const Post = require("./Post");
-const Comment = require("./Comment");
+const Comment = require("./comment");
 
 Company.hasMany(Trip, {
   foreignKey: "company_id",
