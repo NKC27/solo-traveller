@@ -34,6 +34,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// @TODO Add withAuth
 router.get("/dashboard", async (req, res) => {
   try {
     //
@@ -118,6 +119,10 @@ router.get("/company-dashboard/:id", async (req, res) => {
 // Route for logged in company to access their own dashboard
 router.get("/company-dashboard", async (req, res) => {
   try {
+    if (req.session.user_id) {
+      res.redirect("/dashboard");
+      return;
+    }
     console.log("company dash");
     if (!req.session.logged_in) {
       res.redirect("/login-form");
@@ -174,8 +179,11 @@ router.get("/signup-form", async (req, res) => {
 
 router.get("/company-signup-form", async (req, res) => {
   try {
-    if (req.session.logged_in) {
+    if (req.session.logged_in && req.session.company_id) {
       res.redirect("/company-dashboard");
+    } else if (req.session.logged_in) {
+      res.redirect("/dashboard");
+      return;
     }
     res.render("companySignup");
   } catch (error) {
@@ -187,6 +195,9 @@ router.get("/company-login-form", async (req, res) => {
   try {
     if (req.session.logged_in && req.session.company_id) {
       res.redirect("/company-dashboard");
+    } else if (req.session.logged_in) {
+      res.redirect("/dashboard");
+      return;
     }
     res.render("companyLogin");
   } catch (error) {
