@@ -157,7 +157,14 @@ router.get("/group/:id", async (req, res) => {
       return;
     }
 
-    res.status(200).render("tripGroup", { trip, travellers, posts });
+    res
+      .status(200)
+      .render("tripGroup", {
+        trip,
+        travellers,
+        posts,
+        logged_in: req.session.logged_in,
+      });
   } catch (error) {
     res.status(500).json(error);
   }

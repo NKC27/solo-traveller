@@ -12,6 +12,9 @@ postForm.addEventListener("submit", async (event) => {
   const title = postTitle.value.trim();
   const body = postBody;
   console.log("click");
+  console.log(id);
+  console.log(title);
+  console.log(body);
 
   if (id && title && body) {
     const response = await fetch(`/api/users/post/${id}`, {
