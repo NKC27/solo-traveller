@@ -9,6 +9,7 @@ const {
 } = require("../../../models");
 const { isGoing } = require("../../../utils/auth");
 
+// @TODO add companyWithAuth to this route
 router.get("/new-trip", async (req, res) => {
   try {
     res.status(200).render("createTrip", { logged_in: req.session.logged_in });
@@ -17,6 +18,7 @@ router.get("/new-trip", async (req, res) => {
   }
 });
 
+// @TODO add companyWithAuth to this route
 router.get("/edit/:id", async (req, res) => {
   console.log("edit route");
   const tripData = await Trip.findByPk(req.params.id, {
@@ -30,6 +32,7 @@ router.get("/edit/:id", async (req, res) => {
   res.render("editTrip", { trip, logged_in: req.session.logged_in });
 });
 
+// @TODO add companyWithAuth
 router.post("/create", async (req, res) => {
   try {
     console.log("create");
@@ -39,12 +42,15 @@ router.post("/create", async (req, res) => {
       company_id: req.session.company_id,
     });
     console.log(newTrip);
-    res.status(200).render("dashboard", { logged_in: req.session.logged_in });
+    res
+      .status(200)
+      .render("companyDashboard", { logged_in: req.session.logged_in });
   } catch (error) {
     res.status(500).json(error);
   }
 });
 
+//  @TODO add companyWithAuth to this route
 router.delete("/:id", async (req, res) => {
   try {
     console.log("DELETE ROUTE");
@@ -77,9 +83,35 @@ router.post("/going", async (req, res) => {
     if (!req.session.user_id) {
       res.redirect("userLogin");
     }
+    // TEST STARTS HERE
+    const tripData = await Trip.findByPk(req.body.trip_id, {
+      include: [
+        {
+          model: Company,
+        },
+        {
+          model: User,
+        },
+      ],
+    });
 
-    console.log(req.session.logged_in);
-    console.log(req.body);
+    const trip = tripData.get({ plain: true });
+
+    const travellers = trip.users;
+    console.log("TRAVELLERS");
+    console.log(travellers);
+    const travellerIds = travellers.map((traveller) => {
+      return traveller.id;
+    });
+    console.log("TRAVELLER IDS");
+    console.log(travellerIds);
+    console.log(req.session.user_id);
+    if (travellerIds.includes(req.session.user_id)) {
+      res.status(500);
+      return;
+    }
+    // TEST ENDS HERE
+
     const tripUserData = await TripUser.create({
       ...req.body,
       user_id: req.session.user_id,
@@ -117,6 +149,7 @@ router.get("/group/:id", async (req, res) => {
     console.log(trip);
     const going = isGoing(travellers, req.session.user_id);
 
+    // @TODO fix this with a redirect and alert
     if (!going) {
       res.status(401).json({
         message: "Please book onto this trip to view the trip group!",
@@ -132,33 +165,33 @@ router.get("/group/:id", async (req, res) => {
 
 // This route returns an array of users who are marked as going on any given trip
 // Need to add checks that the logged in user is included in the returned array before this information can be returned to them
-router.get("/going/:id", async (req, res) => {
-  try {
-    console.log(req.params.id);
-    const tripData = await Trip.findByPk(req.params.id, {
-      include: {
-        model: User,
-      },
-    });
-    console.log(tripData);
-    // userTrips = array of all trips
-    const trip = tripData.get({ plain: true });
-    console.log("trip");
-    console.log(trip);
-    const travellers = trip.users;
-    // let travellers = []
-    // userTrips.forEach((trip) => {
-    //   // console.log("trip");
-    //   if(trip.id === req.params.id){
-    //     trip.users
-    //   }
-    //   );
+// router.get("/going/:id", async (req, res) => {
+//   try {
+//     console.log(req.params.id);
+//     const tripData = await Trip.findByPk(req.params.id, {
+//       include: {
+//         model: User,
+//       },
+//     });
+//     console.log(tripData);
+// userTrips = array of all trips
+// const trip = tripData.get({ plain: true });
+// console.log("trip");
+// console.log(trip);
+// const travellers = trip.users;
+// let travellers = []
+// userTrips.forEach((trip) => {
+//   // console.log("trip");
+//   if(trip.id === req.params.id){
+//     trip.users
+//   }
+//   );
 
-    res.status(200).json(travellers);
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
+//     res.status(200).json(travellers);
+//   } catch (error) {
+//     res.status(500).json(error);
+//   }
+// });
 
 // Updates the number of travellers column in a given trip
 // Need to add checks that will prevent a user from marking themselves as going multiple times

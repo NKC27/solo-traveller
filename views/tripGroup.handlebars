@@ -1,6 +1,42 @@
 <h1>Trip Group</h1>
 <h2>{{trip.trip_name}}</h2>
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  New Post
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form action="" id="post-form" data-id="{{trip.id}}">
+        {{!-- Form starts here --}}
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Title</label>
+                <input type="text" class="form-control" id="post-title" placeholder="Example input placeholder">
+            </div>
+        <div class="mb-3">
+                <label for="formGroupExampleInput2" class="form-label">Content</label>
+                <textarea class="form-control" id="post-body" placeholder="Another input placeholder"></textarea>
+        </div>
+        {{!-- Modal body ends here --}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
+        <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+        {{!-- Form ends here --}}
+      </div>
+    </div>
+  </div>
+</div>
+
 {{#each posts as |post|}}
      
       <div class="row mb-2 pt-5">
@@ -16,35 +52,44 @@
    <div class="col-auto d-none d-lg-block"><title>Placeholder</title>
   </div>
 <!-- Scrollable modal -->
+
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
   View Comments
 </button>
 
+<!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel"><Main>Comments</Main></h5>
-{{#each comments as |comment|}}
-<!-- Modal -->
-
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{body}}
+          <ul class="list-group list-group-flush"></ul>
+       {{!-- Each starts here --}}
+
+       {{#each comments as |comment|}}
+        <li class="list-group-item">{{body}}</li>
+       {{/each}}
+
+       {{!-- Each ends here --}}
+       </ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Understood</button>
       </div>
     </div>
- {{/each}}
+  </div>
+</div>
+
  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addComment{{id}}">
   Add a Comment
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="addComment{{id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="" aria-hidden="true">
+<div class="modal fade" id="addComment{{id}}"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -52,11 +97,21 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+
+          {{!-- Form starts here --}}
+          <form action="" id="comment-form" data-id="{{id}}">
+        <div class="mb-3">
+  <label for="formGroupExampleInput" class="form-label">Comment</label>
+  <textarea class="form-control" id="comment-body" placeholder="Example input placeholder"></textarea>
+</div>
+
+        
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
+        <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+        {{!-- Form ends here --}}
       </div>
     </div>
   </div>
@@ -85,3 +140,4 @@
  {{/each}}
 
 
+<script src="/js/tripGroup.js"></script>
