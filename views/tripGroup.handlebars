@@ -53,12 +53,12 @@
   </div>
 <!-- Scrollable modal -->
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewComments{{id}}">
   View Comments
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="viewComments{{id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
@@ -99,10 +99,10 @@
       <div class="modal-body">
 
           {{!-- Form starts here --}}
-          <form action="" id="comment-form" data-id="{{id}}">
+          <form action="" class="comment-form" data-id="{{id}}">
         <div class="mb-3">
   <label for="formGroupExampleInput" class="form-label">Comment</label>
-  <textarea class="form-control" id="comment-body" placeholder="Example input placeholder"></textarea>
+  <textarea class="form-control" id="comment-body{{id}}" placeholder="Example input placeholder"></textarea>
 </div>
 
         

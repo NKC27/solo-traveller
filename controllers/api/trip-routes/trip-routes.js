@@ -8,6 +8,7 @@ const {
   Comment,
 } = require("../../../models");
 const { isGoing } = require("../../../utils/auth");
+// const { upload } = require("multer");
 
 // @TODO add companyWithAuth to this route
 router.get("/new-trip", async (req, res) => {
@@ -31,6 +32,14 @@ router.get("/edit/:id", async (req, res) => {
   const trip = tripData.get({ plain: true });
   res.render("editTrip", { trip, logged_in: req.session.logged_in });
 });
+
+// router.post("/image", async (req, res) => {
+//   try {
+//     res.status(200);
+//   } catch (error) {
+//     res.status(500);
+//   }
+// });
 
 // @TODO add companyWithAuth
 router.post("/create", async (req, res) => {
@@ -157,14 +166,12 @@ router.get("/group/:id", async (req, res) => {
       return;
     }
 
-    res
-      .status(200)
-      .render("tripGroup", {
-        trip,
-        travellers,
-        posts,
-        logged_in: req.session.logged_in,
-      });
+    res.status(200).render("tripGroup", {
+      trip,
+      travellers,
+      posts,
+      logged_in: req.session.logged_in,
+    });
   } catch (error) {
     res.status(500).json(error);
   }

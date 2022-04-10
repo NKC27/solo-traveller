@@ -23,7 +23,36 @@
 
       {{#if ../companyAdmin}}
    <a href="/api/trip/edit/{{id}}"> <button id="edit" data-id="{{trip.id}}" class="btn btn-success roboto">Edit</button> </a>
-   
+    {{!-- <button id="upload" data-id="{{trip.id}}" class="btn btn-success roboto">Upload Image</button> --}}
+    
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Upload Image
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form action="/api/trip/image" method="POST" enctype="multipart/form-data" class="upload-form" data-id="{{id}}">
+        <div class="input-group mb-3">
+  <input type="file" name="myImage" class="form-control" id="image{{id}}">
+  <label class="input-group-text" for="inputGroupFile02">Upload</label>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
     <button data-id="{{trip.id}}" class="delete btn btn-danger roboto">Delete</button>
     
       {{/if}}
@@ -37,4 +66,5 @@
 {{/if}}
 </div>
 <script src="/js/travellerGoing.js"></script>
+<script src="/js/imageUpload.js"></script>
 <script src="/js/deleteTrip.js"></script>
