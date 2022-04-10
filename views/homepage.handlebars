@@ -15,6 +15,10 @@
       {{!-- Going button, will be connected to api/trip/going via POST request --}}
       <button  data-id="{{trip.id}}" class="btn btn-primary going roboto">Going!</button>
       {{/if}}
+
+      {{#if ../user_id}}
+        <a href="/api/trip/group/{{trip.id}}"><button  data-id="{{trip.id}}" class="btn btn-primary roboto">Trip Group</button></a> 
+      {{/if}}
      
   </div>
 {{/each}}

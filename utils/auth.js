@@ -15,4 +15,11 @@ module.exports = {
       return false;
     }
   },
+  isGoing: (travellers, currentUserId) => {
+    const idArr = travellers.map((traveller) => {
+      return traveller.id;
+    });
+
+    return idArr.includes(currentUserId);
+  },
 };
