@@ -39,7 +39,9 @@ router.post("/create", async (req, res) => {
       company_id: req.session.company_id,
     });
     console.log(newTrip);
-    res.status(200).render("dashboard", { logged_in: req.session.logged_in });
+    res
+      .status(200)
+      .render("companyDashboard", { logged_in: req.session.logged_in });
   } catch (error) {
     res.status(500).json(error);
   }
