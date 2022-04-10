@@ -10,7 +10,7 @@ postForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const id = event.target.getAttribute("data-id");
   const title = postTitle.value.trim();
-  const body = postBody;
+  const body = postBody.value;
   console.log("click");
   console.log(id);
   console.log(title);
