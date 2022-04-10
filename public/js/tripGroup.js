@@ -11,6 +11,7 @@ postForm.addEventListener("submit", async (event) => {
   const id = event.target.getAttribute("data-id");
   const title = postTitle.value.trim();
   const body = postBody;
+  console.log("click");
 
   if (id && title && body) {
     const response = await fetch(`/api/users/post/${id}`, {
