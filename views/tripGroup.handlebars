@@ -89,7 +89,7 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="addComment{{id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="" aria-hidden="true">
+<div class="modal fade" id="addComment{{id}}"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -99,18 +99,19 @@
       <div class="modal-body">
 
           {{!-- Form starts here --}}
-          <form action="">
+          <form action="" id="comment-form" data-id="{{id}}">
         <div class="mb-3">
-  <label for="formGroupExampleInput" class="form-label">Example label</label>
-  <textarea class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder"></textarea>
+  <label for="formGroupExampleInput" class="form-label">Comment</label>
+  <textarea class="form-control" id="comment-body" placeholder="Example input placeholder"></textarea>
 </div>
 
-        {{!-- Form ends here --}}
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Discard</button>
         <button type="submit" class="btn btn-primary">Post</button>
         </form>
+        {{!-- Form ends here --}}
       </div>
     </div>
   </div>
