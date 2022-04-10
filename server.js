@@ -10,7 +10,37 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const hbs = exphbs.create({ helpers });
 // const hbs = exphbs.create({ helpers });
 const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
+
+const storage = multer.diskStorage({
+  destination: "./public/uploads/",
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 2000000 },
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
+}).single("myImage");
+
+function checkFileType(file, cb) {
+  const fileTypes = /jpeg|jpg|png/;
+  const extName = fileTypes.test(path.extname(file.originalname).toLowerCase());
+  const mimeType = fileTypes.test(file.mimetype);
+
+  if (mimeType && extName) {
+    return cb(null, true);
+  } else {
+    cb("Error");
+  }
+}
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -33,6 +63,22 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
 app.use(express.static(path.join(__dirname, "public")));
+
+app.post("/api/trip/image", (req, res) => {
+  try {
+    upload(req, res, (err) => {
+      if (err) {
+        console.log("ERROR");
+      } else {
+        console.log("OK");
+        console.log(req.file);
+        res.status(200);
+      }
+    });
+  } catch (error) {
+    res.status(500);
+  }
+});
 
 sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
