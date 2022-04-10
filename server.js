@@ -9,6 +9,8 @@ const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const hbs = exphbs.create({ helpers });
 // const hbs = exphbs.create({ helpers });
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 const app = express();
 const PORT = process.env.PORT || 3001;
 
