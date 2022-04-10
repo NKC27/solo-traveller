@@ -8,9 +8,9 @@ router.post("/:id", async (req, res) => {
       user_id: req.session.user_id,
       trip_id: parseInt(req.params.id),
     });
-    res.status(200).json(newPost);
+    res.status(200);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400);
   }
 });
 
