@@ -39,7 +39,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          <form action="/api/trip/image" method="POST" enctype="multipart/form-data" class="upload-form" data-id="{{id}}">
+          <form action="/images" method="POST" enctype="multipart/form-data" class="upload-form" data-id="{{id}}">
         <div class="input-group mb-3">
   <input type="file" name="myImage" class="form-control" id="image{{id}}">
   <label class="input-group-text" for="inputGroupFile02">Upload</label>

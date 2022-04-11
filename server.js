@@ -9,8 +9,12 @@ const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const hbs = exphbs.create({ helpers });
 // const hbs = exphbs.create({ helpers });
-const multer = require("multer");
 const { uploadFile } = require("./s3");
+const fs = require("fs");
+const util = require("util");
+const unlinkFile = util.promisify(fs.unlink);
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 const storage = multer.diskStorage({
   destination: "./public/uploads/",
@@ -22,13 +26,21 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 2000000 },
-  fileFilter: function (req, file, cb) {
-    checkFileType(file, cb);
-  },
-}).single("myImage");
+// const upload = multer({
+//   storage: storage,
+//   limits: { fileSize: 2000000 },
+//   fileFilter: function (req, file, cb) {
+//     checkFileType(file, cb);
+//   },
+// }).single("myImage");
+
+// const upload = multer({
+//   storage: storage,
+//   limits: { fileSize: 2000000 },
+//   fileFilter: function (req, file, cb) {
+//     checkFileType(file, cb);
+//   },
+// });
 
 function checkFileType(file, cb) {
   const fileTypes = /jpeg|jpg|png/;
@@ -81,15 +93,15 @@ app.post("/api/trip/image", (req, res) => {
   }
 });
 
-app.post("/images", upload.single("image"), async (req, res) => {
+app.post("/images", upload.single("myImage"), async (req, res) => {
   const file = req.file;
   console.log(file);
 
   const result = await uploadFile(file);
   await unlinkFile(file.path);
   console.log(result);
-  const description = req.body.description;
-  res.send({ imagePath: `/images/${result.Key}` });
+  // const description = req.body.description;
+  res.send({ imagePath: `/uploads/${result.Key}` });
 });
 
 sequelize.sync({ force: true }).then(() => {
