@@ -10,6 +10,7 @@ const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const hbs = exphbs.create({ helpers });
 // const hbs = exphbs.create({ helpers });
 const multer = require("multer");
+const { uploadFile } = require("./s3");
 
 const storage = multer.diskStorage({
   destination: "./public/uploads/",
@@ -78,6 +79,17 @@ app.post("/api/trip/image", (req, res) => {
   } catch (error) {
     res.status(500);
   }
+});
+
+app.post("/images", upload.single("image"), async (req, res) => {
+  const file = req.file;
+  console.log(file);
+
+  const result = await uploadFile(file);
+  await unlinkFile(file.path);
+  console.log(result);
+  const description = req.body.description;
+  res.send({ imagePath: `/images/${result.Key}` });
 });
 
 sequelize.sync({ force: true }).then(() => {
