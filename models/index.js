@@ -59,4 +59,9 @@ Comment.belongsTo(Post, {
   onDelete: "CASCADE",
 });
 
+Comment.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
+
 module.exports = { User, Trip, Company, TripUser, Post, Comment };
