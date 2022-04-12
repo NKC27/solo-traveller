@@ -34,7 +34,7 @@ function getFileStream(fileKey) {
     Key: fileKey,
     Bucket: bucketName,
   };
-
+  // passing in file key to s3 bucket to get readstream
   return s3.getObject(downloadParams).createReadStream();
 }
 exports.getFileStream = getFileStream;

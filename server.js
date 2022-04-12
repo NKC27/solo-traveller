@@ -9,7 +9,7 @@ const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const hbs = exphbs.create({ helpers });
 // const hbs = exphbs.create({ helpers });
-const { uploadFile } = require("./s3");
+const { uploadFile, getFileStream } = require("./s3");
 const fs = require("fs");
 const util = require("util");
 const unlinkFile = util.promisify(fs.unlink);
@@ -91,6 +91,14 @@ app.post("/api/trip/image", (req, res) => {
   } catch (error) {
     res.status(500);
   }
+});
+
+app.get("/images/:key", (req, res) => {
+  console.log(req.params);
+  const key = req.params.key;
+  const readStream = getFileStream(key);
+
+  readStream.pipe(res);
 });
 
 app.post("/images", upload.single("myImage"), async (req, res) => {
