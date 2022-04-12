@@ -1,4 +1,7 @@
-<form action="" id="update-trip-form" data-id="{{trip.id}}">
+<section class="box" style="background-image: url(/images/soloGathering.jpg);"> 
+<div class="container col-lg-6">
+<form action="" id="update-trip-form" data-id="{{trip.id}}" style="background-color: white;" class="container">
+   <h1 style="color: #ffc107);"> Edit Your Trip</h1>
 <div class="mb-3">
   <label for="formGroupExampleInput"  class="form-label">Trip Name</label>
   <input type="text" class="form-control" id="trip-name" placeholder="Example input placeholder" value="{{trip.trip_name}}">
@@ -8,9 +11,34 @@
   <input type="text" class="form-control" id="trip-link" placeholder="Another input placeholder" value="{{trip.trip_link}}">
 </div>
 <div class="mb-3">
+  <label for="formGroupExampleInput2"  class="form-label nexa2">Image Source</label>
+  <input type="text" class="form-control" id="img-src" placeholder="Another input placeholder" value="{{trip.img_src}}">
+</div>
+<button type="submit" class="btn1 mb-3">Submit</button>
+</form>
+<script src="../../js/createTrip.js"></script>
+</div>
+</section>
+
+{{!-- 
+
+<form action="" id="update-trip-form" data-id="{{trip.id}}">
+<div class="mb-3">
+  <label for="formGroupExampleInput"  class="form-label">Trip Name</label>
+  <input type="text" class="form-control" id="trip-name" placeholder="Example input placeholder" value="{{trip.trip_name}}">
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput2"  class="form-label">Trip Link</label>
+  <input type="text" class="form-control" id="trip-link" placeholder="Another input placeholder" value="{{trip.trip_link}}">
+</div>
+
+<div class="mb-3">
   <label for="formGroupExampleInput2"  class="form-label">Image Source</label>
   <input type="text" class="form-control" id="img-src" placeholder="Another input placeholder" value="{{trip.img_src}}">
 </div>
+
 <button type="submit">Submit</button>
-</form>
+</form> 
+
+--}}
 <script src="../../../js/editTrip.js"></script>
