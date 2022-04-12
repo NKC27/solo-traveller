@@ -93,7 +93,7 @@ app.post("/api/trip/image", (req, res) => {
   }
 });
 
-app.get("/images/:key", (req, res) => {
+app.get("/uploads/:key", (req, res) => {
   console.log(req.params);
   const key = req.params.key;
   const readStream = getFileStream(key);
