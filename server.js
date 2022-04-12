@@ -120,7 +120,7 @@ app.post("/images/:id", upload.single("myImage"), async (req, res) => {
   // res.send({ imagePath: `/uploads/${result.Key}` });
 });
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
 });
 

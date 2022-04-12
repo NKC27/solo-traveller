@@ -30,7 +30,16 @@ router.get("/edit/:id", async (req, res) => {
     ],
   });
   const trip = tripData.get({ plain: true });
-  res.render("editTrip", { trip, logged_in: req.session.logged_in });
+  if (trip.company_id === req.session.company_id) {
+    isOwnAdmin = true;
+  } else {
+    isOwnAdmin = false;
+  }
+  res.render("editTrip", {
+    trip,
+    logged_in: req.session.logged_in,
+    isOwnAdmin,
+  });
 });
 
 // router.post("/image", async (req, res) => {
@@ -232,7 +241,7 @@ router.put("/going", async (req, res) => {
     );
     // console.log(updatedPost);
     res
-      .json(newTravellerNum)
+
       //   .json("updated")
       .status(200)
       .render("dashboard", { logged_in: req.session.logged_in });
