@@ -9,7 +9,13 @@ const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const hbs = exphbs.create({ helpers });
 // const hbs = exphbs.create({ helpers });
+const { uploadFile, getFileStream } = require("./s3");
+const fs = require("fs");
+const util = require("util");
+const unlinkFile = util.promisify(fs.unlink);
 const multer = require("multer");
+const { Trip } = require("./models");
+const upload = multer({ dest: "uploads/" });
 
 const storage = multer.diskStorage({
   destination: "./public/uploads/",
@@ -21,13 +27,21 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 2000000 },
-  fileFilter: function (req, file, cb) {
-    checkFileType(file, cb);
-  },
-}).single("myImage");
+// const upload = multer({
+//   storage: storage,
+//   limits: { fileSize: 2000000 },
+//   fileFilter: function (req, file, cb) {
+//     checkFileType(file, cb);
+//   },
+// }).single("myImage");
+
+// const upload = multer({
+//   storage: storage,
+//   limits: { fileSize: 2000000 },
+//   fileFilter: function (req, file, cb) {
+//     checkFileType(file, cb);
+//   },
+// });
 
 function checkFileType(file, cb) {
   const fileTypes = /jpeg|jpg|png/;
@@ -78,6 +92,32 @@ app.post("/api/trip/image", (req, res) => {
   } catch (error) {
     res.status(500);
   }
+});
+
+app.get("/uploads/:key", (req, res) => {
+  console.log(req.params);
+  const key = req.params.key;
+  const readStream = getFileStream(key);
+
+  readStream.pipe(res);
+});
+
+app.post("/images/:id", upload.single("myImage"), async (req, res) => {
+  const file = req.file;
+  console.log(file);
+
+  const result = await uploadFile(file);
+  // delete file from server once uploaded to s3
+  await unlinkFile(file.path);
+  console.log(result);
+  // const description = req.body.description;
+  Trip;
+  await Trip.update(
+    { img_src: `/uploads/${result.Key}` },
+    { where: { id: req.params.id } }
+  );
+  res.status(200).render("companyDashboard");
+  // res.send({ imagePath: `/uploads/${result.Key}` });
 });
 
 sequelize.sync({ force: true }).then(() => {
