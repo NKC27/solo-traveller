@@ -47,9 +47,10 @@
           <h3 class="mb-0">{{title}}</h3>
           <div class="mb-1 text-muted">{{date_created}}</div>
           <p class="card-text mb-auto">{{body}}</p>
+          <h3>{{post.user.user_name}}</h3>
           {{!-- <a href="/api/posts/{{id}}" class="stretched-link">Continue reading</a> --}}
         </div>
-   <div class="col-auto d-none d-lg-block"><title>Placeholder</title>
+   <div class="col-auto d-none d-lg-block"><title>HELLO</title>
   </div>
 <!-- Scrollable modal -->
 
@@ -70,7 +71,9 @@
        {{!-- Each starts here --}}
 
        {{#each comments as |comment|}}
-        <li class="list-group-item">{{body}}</li>
+        <li class="list-group-item">{{body}}
+        <small>{{comment.user.user_name}}</small>
+        </li>
        {{/each}}
 
        {{!-- Each ends here --}}
