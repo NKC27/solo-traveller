@@ -183,6 +183,11 @@ img {
   font-size: 100px;
 }
 
+.nexa2 {
+  font-size: 25px;
+  color: #ffc107;
+}
+
 .loghover:hover {
   color: rgb(19, 109, 211);
 }
