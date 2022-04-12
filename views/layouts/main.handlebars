@@ -17,15 +17,23 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto+Mono:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto+Mono:wght@300&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto+Mono:wght@300&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="http://fonts.cdnfonts.com/css/lovelo?styles=25962"
+      rel="stylesheet"
+    />
+
     {{! <link rel="stylesheet" href="/css/jass.css"> }}
     <link rel="stylesheet" href="/css/style.css" />
   </head>
@@ -37,7 +45,7 @@
         <div
           class="d-flex flex-wrap align-items-center justify-content-between"
         >
-          {{!-- <a
+          {{! <a
             href="/"
             class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
           >
@@ -49,22 +57,20 @@
               role="img"
               aria-label="Bootstrap"
             ><use xlink:href="#bootstrap"></use></svg>
-          </a> --}}
+          </a> }}
           <div>
-           <h2><a href="#">Solo Traveller</a></h2> 
+            <h2><a href="#">Solo Traveller</a></h2>
           </div>
 
           <div class="text-end">
             {{! @TODO add conditional for displaying login/logout depending on whether logged_in set to true or false }}
-             <a href="/">
-            <button
-              type="button"
-              class="btn btn-outline-dark bg-custom-blue me-2"
-            >Homepage</button>
+            <a href="/">
+              <button
+                type="button"
+                class="btn btn-outline-dark bg-custom-blue me-2"
+              >Homepage</button>
             </a>
-            
-            
-           
+
             {{#if logged_in}}
               <button
                 type="button"
@@ -73,36 +79,36 @@
               >Logout</button>
             {{else}}
               <a href="/login-form"><button
-                type="button"
-                class="btn btn-outline-dark bg-custom-blue me-2"
-              >User Login</button></a>
+                  type="button"
+                  class="btn btn-outline-dark bg-custom-blue me-2"
+                >User Login</button></a>
             {{/if}}
             <a href="/company-login-form">
-            <button
-              type="button"
-              class="btn btn-outline-dark bg-custom-blue me-2"
-            >Company Login</button>
-            </a>
-            {{#if isOwnAdmin}}
-  <a href="/company-dashboard"><button
+              <button
                 type="button"
                 class="btn btn-outline-dark bg-custom-blue me-2"
-              >Dashboard</button></a>
+              >Company Login</button>
+            </a>
+            {{#if isOwnAdmin}}
+              <a href="/company-dashboard"><button
+                  type="button"
+                  class="btn btn-outline-dark bg-custom-blue me-2"
+                >Dashboard</button></a>
             {{/if}}
             {{#unless isOwnAdmin}}
               {{#if logged_in}}
                 <a href="/dashboard"><button
-                type="button"
-                class="btn btn-outline-dark bg-custom-blue me-2"
-              >Dashboard</button></a>
+                    type="button"
+                    class="btn btn-outline-dark bg-custom-blue me-2"
+                  >Dashboard</button></a>
               {{/if}}
             {{/unless}}
           </div>
         </div>
       </div>
     </header>
-    {{!-- <main class="container container-fluid mt-5"> --}}
-      <main class="image-bg">
+    {{! <main class="container container-fluid mt-5"> }}
+    <main class="image-bg">
       {{{body}}}
     </main>
     <footer>
