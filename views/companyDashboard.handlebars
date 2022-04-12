@@ -12,7 +12,7 @@
       <h1 class="display-4 fst-italic roboto">{{trip_name}}</h1>
       <p class="lead my-3 roboto">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
       <p class="lead mb-0"><a href="#" class="text-white fw-bold roboto">{{company.user_name}}</a></p>
-        <img src="/uploads/8241155c38db79a7113196ee530111ee"></img>
+        <img src="{{img_src}}"></img>
 
       {{#if ../user_id}}
    {{!-- {{#unless ../companyAdmin}} --}}
@@ -40,7 +40,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          <form action="/images" method="POST" enctype="multipart/form-data" class="upload-form" data-id="{{id}}">
+          <form action="/images/{{ id }}" method="POST" enctype="multipart/form-data" class="upload-form" data-id="{{id}}">
         <div class="input-group mb-3">
   <input type="file" name="myImage" class="form-control" id="image{{id}}">
   <label class="input-group-text" for="inputGroupFile02">Upload</label>

@@ -14,6 +14,7 @@ const fs = require("fs");
 const util = require("util");
 const unlinkFile = util.promisify(fs.unlink);
 const multer = require("multer");
+const { Trip } = require("./models");
 const upload = multer({ dest: "uploads/" });
 
 const storage = multer.diskStorage({
@@ -101,7 +102,7 @@ app.get("/uploads/:key", (req, res) => {
   readStream.pipe(res);
 });
 
-app.post("/images", upload.single("myImage"), async (req, res) => {
+app.post("/images/:id", upload.single("myImage"), async (req, res) => {
   const file = req.file;
   console.log(file);
 
@@ -110,7 +111,13 @@ app.post("/images", upload.single("myImage"), async (req, res) => {
   await unlinkFile(file.path);
   console.log(result);
   // const description = req.body.description;
-  res.send({ imagePath: `/uploads/${result.Key}` });
+  Trip;
+  await Trip.update(
+    { img_src: `/uploads/${result.Key}` },
+    { where: { id: req.params.id } }
+  );
+  res.status(200).render("companyDashboard");
+  // res.send({ imagePath: `/uploads/${result.Key}` });
 });
 
 sequelize.sync({ force: true }).then(() => {
