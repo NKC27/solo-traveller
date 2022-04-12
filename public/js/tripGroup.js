@@ -22,11 +22,11 @@ postForm.addEventListener("submit", async (event) => {
       headers: { "Content-Type": "application/json" },
     });
 
-    if (response.ok) {
-      document.location.replace("/dashboard");
-    } else {
-      alert(response.statusText);
-    }
+    // if (response.ok) {
+    document.location.replace(`/api/trip/group/${id}`);
+    // } else {
+    //   alert(response.statusText);
+    // }
   }
 });
 
@@ -35,7 +35,7 @@ commentForms.forEach((commentForm) => {
     event.preventDefault();
     console.log("comment form");
     const id = event.target.getAttribute("data-id");
-
+    const tripId = event.target.getAttribute("data-trip-id");
     const commentBody = document.getElementById(`comment-body${id}`);
     const body = commentBody.value.trim();
     console.log(id);
@@ -47,11 +47,11 @@ commentForms.forEach((commentForm) => {
         headers: { "Content-Type": "application/json" },
       });
 
-      if (response.ok) {
-        document.location.replace("/dashboard");
-      } else {
-        alert(response.statusText);
-      }
+      //   if (response.ok) {
+      document.location.replace(`/api/trip/group/${tripId}`);
+      //   } else {
+      // alert(response.statusText);
+      //   }
     }
   });
 });

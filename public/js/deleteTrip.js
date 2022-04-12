@@ -9,11 +9,11 @@ deleteBtn.forEach((btn) => {
         method: "DELETE",
       });
 
-      if (response.ok) {
-        // document.location.replace("/company-dashboard");
-      } else {
-        alert("OMG");
-      }
+      //   if (response.ok) {
+      document.location.replace("/company-dashboard");
+      //   } else {
+      // alert("OMG");
+      //   }
     }
   });
 });

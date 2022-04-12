@@ -9,7 +9,7 @@ router.post("/:id", async (req, res) => {
       trip_id: parseInt(req.params.id),
     });
     console.log(newPost);
-    res.status(200);
+    res.status(200).redirect(`/api/trip/group/${req.params.id}`);
   } catch (err) {
     res.status(400);
   }
