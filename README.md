@@ -31,8 +31,8 @@ To install the required dependencies and set up the application, run:
 ```
 $ npm i
 $ source schema.sql
-$ npm run seed
 $ node server.js
+$ npm run seed
 ```
 
 You will also need to place a .env file in the root directory of the project, in order to connect to your MySQL database. Here's a specific example:
@@ -43,6 +43,10 @@ file: .env
 DB_NAME=solotraveller_db
 DB_USER=root
 DB_PASSWORD=
+AWS_BUCKET_NAME="solo-traveller"
+AWS_BUCKET_REGION="eu-west-2"
+AWS_ACCESS_KEY="AKIA2VOHTEYX########"
+AWS_SECRET_KEY=
 ```
 
 ## Usage

@@ -106,6 +106,7 @@ app.post("/images", upload.single("myImage"), async (req, res) => {
   console.log(file);
 
   const result = await uploadFile(file);
+  // delete file from server once uploaded to s3
   await unlinkFile(file.path);
   console.log(result);
   // const description = req.body.description;
