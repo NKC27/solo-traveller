@@ -152,7 +152,7 @@ router.get("/group/:id", async (req, res) => {
 
     // @TODO fix this with a redirect and alert
     if (!going) {
-      res.redirect("/");
+      res.redirect("/homepage");
       return;
     }
 

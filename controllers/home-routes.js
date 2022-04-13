@@ -4,25 +4,25 @@ const { Trip, User, Company, TripUser } = require("../models");
 const withAuth = require("../utils/auth");
 const { isAdmin } = require("../utils/auth");
 
-router.get("/homepage", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     res.render("generalHomepage", { layout: "other" });
   } catch (error) {}
 });
 
-router.get("/", async (req, res) => {
+router.get("/homepage", async (req, res) => {
   try {
     const tripData = await Trip.findAll({
       include: [
         {
           model: Company,
-          attributes: ["user_name"],
         },
       ],
     });
 
     // Serialize data so the template can read it
     const trips = tripData.map((trip) => trip.get({ plain: true }));
+    console.log(trips);
     res.render("homepage", {
       logged_in: req.session.logged_in,
       trips,
@@ -101,6 +101,7 @@ router.get("/company-dashboard/:id", async (req, res) => {
       user_id: req.session.user_id,
       ...company,
       companyAdmin,
+      isOwnAdmin: true,
     });
   } catch (err) {
     res.status(500).json(err);
