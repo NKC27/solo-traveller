@@ -14,7 +14,7 @@ goingBtns.forEach((btn) => {
         headers: { "Content-Type": "application/json" },
       });
 
-      //   if (response.ok) {
+      // if (response.ok) {
       await fetch("/api/trip/going", {
         method: "PUT",
         body: JSON.stringify({ trip_id }),

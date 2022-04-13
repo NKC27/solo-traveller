@@ -5,14 +5,14 @@ createForm.addEventListener("submit", async (event) => {
   console.log("event listener");
   const tripName = document.getElementById("trip-name");
   const tripLink = document.getElementById("trip-link");
-  const imgSrc = document.getElementById("img-src");
-  if (tripName && tripLink && imgSrc) {
+  const tripDescription = document.getElementById("trip-description");
+  if (tripName && tripLink && tripDescription) {
     const response = await fetch("/api/trip/create", {
       method: "POST",
       body: JSON.stringify({
         trip_name: tripName.value,
         trip_link: tripLink.value,
-        img_src: imgSrc.value,
+        trip_description: tripDescription.value,
       }),
       headers: { "Content-Type": "application/json" },
     });

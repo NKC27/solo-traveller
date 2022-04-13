@@ -34,6 +34,11 @@ Trip.init(
     img_src: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: "/images/placeholder.jpg",
+    },
+    trip_description: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     traveller_num: {
       type: DataTypes.INTEGER,
