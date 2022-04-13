@@ -9,9 +9,17 @@
 }
 body {
   font-family: "Lovelo", sans-serif;
-  background-image: url('/images/bkgrnd-img.jpg');
-  background-repeat:no-repeat;
-  background-size:cover;
+  background-image: url("/images/image2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.custom-shadow {
+  box-shadow: 5px 10px rgb(253, 72, 72);
+}
+
+.custom-red {
+  color: rgb(253, 72, 72);
 }
 
 .custom-header {
@@ -211,55 +219,94 @@ img {
 }
 
 .genBtn {
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 3px;
-    background: transparent;
-    border-radius: 50px;
-    color: rgb(253, 72, 72);
-    text-transform: uppercase;
-    border: 2px solid rgb(253, 72, 72);
-    transition: all 0.2s;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 3px;
+  background: transparent;
+  border-radius: 50px;
+  color: rgb(255, 255, 255);
+  /* color: rgb(253, 72, 72); */
+  text-transform: uppercase;
+  /* border: 2px solid rgb(253, 72, 72); */
+  border: 2px solid rgb(255, 255, 255);
+  transition: all 0.2s;
 }
 
 .genBtn:hover {
   padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 3px;
-    background: rgb(253, 72, 72);
-    border-radius: 50px;
-    color: rgb(255, 255, 255);
-    text-transform: uppercase;
-    border: 2px solid rgb(253, 72, 72);
-    transition: all 0.25s;
+  padding-right: 25px;
+  padding-top: 3px;
+  background: rgb(255, 255, 255);
+  /* background: rgb(253, 72, 72); */
+  border-radius: 50px;
+  /* color: rgb(255, 255, 255); */
+  color: rgb(253, 72, 72);
+  text-transform: uppercase;
+  /* border: 2px solid rgb(253, 72, 72); */
+  border: 2px solid rgb(255, 255, 255);
+  transition: all 0.25s;
 }
 
 .navBtn {
   padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 7px;
-    padding-bottom: 5px;
-    background: transparent;
-    border-radius: 5px;
-    color: rgb(253, 72, 72);
-    text-transform: uppercase;
-    border: 2px solid rgb(253, 72, 72);
-    transition: all 0.2s;
+  padding-right: 15px;
+  padding-top: 7px;
+  padding-bottom: 5px;
+  background: transparent;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  /* color: rgb(253, 72, 72); */
+  text-transform: uppercase;
+  /* border: 2px solid rgb(253, 72, 72); */
+  border: 2px solid rgb(255, 255, 255);
+  transition: all 0.2s;
 }
 
 .navBtn:hover {
   padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 7px;
-    padding-bottom: 5px;
-    background: rgb(253, 72, 72);
-    border-radius: 5px;
-    color: rgb(255, 255, 255);
-    text-transform: uppercase;
-    border: 2px solid rgb(253, 72, 72);
-    transition: all 0.2s;
+  padding-right: 15px;
+  padding-top: 7px;
+  padding-bottom: 5px;
+  /* background: rgb(253, 72, 72); */
+  background: rgb(255, 255, 255);
+  border-radius: 5px;
+  color: rgb(253, 72, 72);
+  text-transform: uppercase;
+  /* border: 2px solid rgb(253, 72, 72); */
+  border: 2px solid rgb(255, 255, 255);
+  transition: all 0.2s;
 }
 
-.red-border{
+.trip-btn {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 7px;
+  padding-bottom: 5px;
+  background: transparent;
+  border-radius: 5px;
+  color: rgb(253, 72, 72);
+  /* color: rgb(253, 72, 72); */
+  text-transform: uppercase;
+  /* border: 2px solid rgb(253, 72, 72); */
+  border: 2px solid rgb(253, 72, 72);
+  transition: all 0.2s;
+}
+
+.trip-btn:hover {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 7px;
+  padding-bottom: 5px;
+  background-color: rgb(253, 72, 72);
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  /* color: rgb(253, 72, 72); */
+  text-transform: uppercase;
+  /* border: 2px solid rgb(253, 72, 72); */
+  border: 2px solid rgb(253, 72, 72);
+  transition: all 0.2s;
+}
+
+.red-border {
   border: 2px solid rgb(253, 72, 72);
 }
