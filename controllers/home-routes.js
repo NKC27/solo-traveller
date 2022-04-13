@@ -40,6 +40,7 @@ router.get("/dashboard", async (req, res) => {
 
     if (req.session.company_id) {
       res.redirect("/company-dashboard");
+      return;
     }
     if (!req.session.logged_in) {
       res.redirect("/login-form");

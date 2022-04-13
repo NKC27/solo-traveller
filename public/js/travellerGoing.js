@@ -21,7 +21,7 @@ goingBtns.forEach((btn) => {
         headers: { "Content-Type": "application/json" },
       });
       // if (nextResponse.ok) {
-      document.location.replace("/");
+      document.location.replace("/homepage");
       // }
       //   } else {
 
