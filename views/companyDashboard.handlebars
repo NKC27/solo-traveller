@@ -4,12 +4,12 @@
 {{!-- @TODO add "add post" --}}
 <div class="container">
     {{#if companyAdmin}}
-<a href="/api/trip/new-trip"><button class="genBtn going roboto mb-3">Add a Trip</button></a>
+<a href="/api/trip/new-trip"><button class="genBtn going roboto mx-5 mb-3">Add a Trip</button></a>
 {{/if}}
 
 {{#each trips as |trip|}}
 
-  <div class="container d-flex justify-content-between p-3 p-md-3 mb-4 text-dark rounded bg-white red-border">
+  <div class="container d-flex justify-content-between p-3 p-md-3 my-5 custom-red rounded bg-white custom-shadow">
     <div class="col-6 p-3">
       <h1 class="display-4 fst-italic roboto">{{trip_name}}</h1>
       <p class="lead my-3 roboto">{{trip_description}}</p>
@@ -25,11 +25,11 @@
       {{!-- @TODO: add conditional edit and delete --}}
 
       {{#if ../companyAdmin}}
-   <a href="/api/trip/edit/{{id}}"> <button id="edit" data-id="{{trip.id}}" class="genBtn roboto">Edit</button> </a>
+   <a href="/api/trip/edit/{{id}}"> <button id="edit" data-id="{{trip.id}}" class="trip-btn roboto">Edit</button> </a>
     {{!-- <button id="upload" data-id="{{trip.id}}" class="btn btn-success roboto">Upload Image</button> --}}
     
 <!-- Button trigger modal -->
-<button type="button" class="genBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="trip-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Upload Image
 </button>
 
@@ -56,7 +56,7 @@
     </div>
   </div>
 </div>
-    <button data-id="{{trip.id}}" class="delete genBtn roboto">Delete</button>
+    <button data-id="{{trip.id}}" class="delete trip-btn roboto">Delete</button>
     
       {{/if}}
     </div>
@@ -67,9 +67,7 @@
 
 {{/each}}
 
-{{#if logged_in}}
-<h1>you are logged in</h1>
-{{/if}}
+
 </div>
 <script src="/js/travellerGoing.js"></script>
 <script src="/js/imageUpload.js"></script>
