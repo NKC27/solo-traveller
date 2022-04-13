@@ -24,7 +24,7 @@ module.exports = {
   },
   companyWithAuth: (req, res, next) => {
     if (!req.session.company_id) {
-      res.redirect("/company-login");
+      res.redirect("/company-login-form");
     } else {
       next();
     }
