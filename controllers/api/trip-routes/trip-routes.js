@@ -7,11 +7,9 @@ const {
   Post,
   Comment,
 } = require("../../../models");
-const { isGoing } = require("../../../utils/auth");
-// const { upload } = require("multer");
+const { isGoing, companyWithAuth } = require("../../../utils/auth");
 
-// @TODO add companyWithAuth to this route
-router.get("/new-trip", async (req, res) => {
+router.get("/new-trip", companyWithAuth, async (req, res) => {
   try {
     res.status(200).render("createTrip", { logged_in: req.session.logged_in });
   } catch (error) {
@@ -20,7 +18,7 @@ router.get("/new-trip", async (req, res) => {
 });
 
 // @TODO add companyWithAuth to this route
-router.get("/edit/:id", async (req, res) => {
+router.get("/edit/:id", companyWithAuth, async (req, res) => {
   console.log("edit route");
   const tripData = await Trip.findByPk(req.params.id, {
     include: [
@@ -42,16 +40,8 @@ router.get("/edit/:id", async (req, res) => {
   });
 });
 
-// router.post("/image", async (req, res) => {
-//   try {
-//     res.status(200);
-//   } catch (error) {
-//     res.status(500);
-//   }
-// });
-
 // @TODO add companyWithAuth
-router.post("/create", async (req, res) => {
+router.post("/create", companyWithAuth, async (req, res) => {
   try {
     console.log("create");
     console.log(req.body);
@@ -69,7 +59,7 @@ router.post("/create", async (req, res) => {
 });
 
 //  @TODO add companyWithAuth to this route
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", companyWithAuth, async (req, res) => {
   try {
     console.log("DELETE ROUTE");
     console.log(req.params.id);
@@ -80,15 +70,9 @@ router.delete("/:id", async (req, res) => {
         company_id: req.session.company_id,
       },
     });
-    // console.log(tripData);
-    // console.log("This is the post data" + postData);
-    // if (!tripData) {
-    //   console.log("NO TRIP DATA");
-    //   res.status(404).json("No Trip found with this id!");
-    //   return;
-    // }
+
     res
-      //   .json("updated")
+
       .status(200)
       .render("company-dashboard", { logged_in: req.session.logged_in });
   } catch (err) {
@@ -144,7 +128,6 @@ router.post("/going", async (req, res) => {
 
 router.get("/group/:id", async (req, res) => {
   try {
-    console.log("GROUP ROUTE");
     const tripData = await Trip.findByPk(req.params.id, {
       include: [
         {
@@ -156,7 +139,7 @@ router.get("/group/:id", async (req, res) => {
         },
       ],
     });
-    console.log(tripData);
+
     // userTrips = array of all trips
     const trip = tripData.get({ plain: true });
 
@@ -169,9 +152,7 @@ router.get("/group/:id", async (req, res) => {
 
     // @TODO fix this with a redirect and alert
     if (!going) {
-      res.status(401).json({
-        message: "Please book onto this trip to view the trip group!",
-      });
+      res.redirect("/");
       return;
     }
 

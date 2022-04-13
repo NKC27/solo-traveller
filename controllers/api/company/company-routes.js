@@ -1,11 +1,10 @@
 const router = require("express").Router();
 const { Company } = require("./../../../models");
+const { withAuth } = require("../../../utils/auth");
 // const { Trip, User } = require("../models");
 // const withAuth = require("../utils/auth");
 
 router.post("/signup", async (req, res) => {
-  console.log("signup route hit");
-  console.log(req.body);
   try {
     const companyData = await Company.create(req.body);
     const company = companyData.get({ plain: true });

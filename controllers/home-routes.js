@@ -34,17 +34,17 @@ router.get("/", async (req, res) => {
   }
 });
 
-// @TODO Add withAuth
 router.get("/dashboard", async (req, res) => {
   try {
     //
 
-    console.log(req.session);
+    if (req.session.company_id) {
+      res.redirect("/company-dashboard");
+    }
     if (!req.session.logged_in) {
       res.redirect("/login-form");
       return;
     }
-    console.log(req.headers);
 
     const tripData = await Trip.findAll({
       include: {
@@ -53,7 +53,6 @@ router.get("/dashboard", async (req, res) => {
     });
     // userTrips = array of all trips
     const userTrips = tripData.map((trip) => trip.get({ plain: true }));
-    console.log(userTrips);
 
     // myTrips is = to an array of all trips where users contains a user with an id === req.session.user_id
     const myTrips = userTrips.filter((trip) => {
@@ -69,7 +68,7 @@ router.get("/dashboard", async (req, res) => {
     const userData = await User.findByPk(req.session.user_id);
     const user = userData.get({ plain: true });
 
-    // Render user dashboard with logged_in variablle and myTrips array
+    // Render user dashboard with logged_in variable and myTrips array
     return res.render("dashboard", {
       logged_in: req.session.logged_in,
       myTrips,
@@ -83,28 +82,20 @@ router.get("/dashboard", async (req, res) => {
 // Route for any kind of user to access any company dashboard
 router.get("/company-dashboard/:id", async (req, res) => {
   try {
-    console.log("company dash");
     if (!req.session.logged_in) {
       res.redirect("/login-form");
       return;
     }
-    console.log("REQ");
-    console.log(req.session);
-
-    console.log(req.session.company_id);
-    console.log(req.params.id);
+    // Comparing company id to param id to check if the user has authorisation to edit and delete on this page
     let companyAdmin = isAdmin(req.session.company_id, req.params.id);
 
-    console.log(companyAdmin);
     const companyData = await Company.findByPk(req.params.id, {
       attributes: { exclude: ["password"] },
       include: [{ model: Trip }],
     });
-    console.log(companyData);
+
     const company = await companyData.get({ plain: true });
-    console.log(company);
-    console.log("LOGGED IN");
-    console.log(req.session.logged_in);
+
     res.render("companyDashboard", {
       logged_in: req.session.logged_in,
       user_id: req.session.user_id,
@@ -123,21 +114,20 @@ router.get("/company-dashboard", async (req, res) => {
       res.redirect("/dashboard");
       return;
     }
-    console.log("company dash");
     if (!req.session.logged_in) {
-      res.redirect("/login-form");
+      res.redirect("/company-login-form");
       return;
     }
 
     let companyAdmin = isAdmin(req.session.company_id, req.session.company_id);
-    console.log(companyAdmin);
+
     const companyData = await Company.findByPk(req.session.company_id, {
       attributes: { exclude: ["password"] },
       include: [{ model: Trip }],
     });
-    console.log(companyData);
+
     const company = await companyData.get({ plain: true });
-    console.log(company);
+
     res.render("companyDashboard", {
       logged_in: req.session.logged_in,
       isOwnAdmin: req.session.isOwnAdmin,
@@ -151,7 +141,6 @@ router.get("/company-dashboard", async (req, res) => {
 
 router.get("/login-form", async (req, res) => {
   try {
-    // console.log("login form hit");
     if (req.session.company_id) {
       res.redirect("/company-dashboard");
       return;

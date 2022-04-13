@@ -22,4 +22,11 @@ module.exports = {
 
     return idArr.includes(currentUserId);
   },
+  companyWithAuth: (req, res, next) => {
+    if (!req.session.company_id) {
+      res.redirect("/company-login");
+    } else {
+      next();
+    }
+  },
 };
