@@ -2,20 +2,23 @@
 
 <div class="container">
 {{#if logged_in}}
-<h1 class="m-4">Welcome {{user.user_name}}</h1>
+<h1 class="m-4 text-white">Welcome {{user.user_name}}</h1>
 
 {{/if}}
 
 
 {{#each myTrips as |trip|}}
 
-  <div class="p-4 p-md-5 mb-4 text-dark rounded bg-white border border-dark col-8">
+  <div class="p-4 p-md-5 mb-4 custom-red rounded bg-white container d-flex justify-content-between custom-shadow ">
     <div class="col-md-6 px-0">
       <h1 class="display-4 fst-italic roboto">{{trip.trip_name}}</h1>
       <p class="lead my-3 roboto">{{trip_description}}</p>
       <p class="lead mb-0"><a href="#" class="text-white fw-bold roboto">{{trip.trip_link}}</a></p>
       <p class="lead mb-0"><a href="/api/trip/group/{{id}}" class="text-white fw-bold roboto">Trip Group</a></p>
     </div>
+    <div class="col-4">
+    <img src="{{img_src}}"></img>
+  </div>
   </div>
 
 {{/each}}
