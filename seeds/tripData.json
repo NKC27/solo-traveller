@@ -1,20 +1,20 @@
 [
-    {
-      "trip_name": "Barcelona",
-      "company_id": 1,
-      "trip_link": "www.barcelona.com",
-      "img_src": "imgsrc"
-    },
-    {
-        "trip_name": "Greece",
-        "company_id": 2,
-        "trip_link": "www.greece.com",
-        "img_src": "imgsrc"
-      },
-      {
-        "trip_name": "Australia",
-        "company_id": 3,
-        "trip_link": "www.australia.com",
-        "img_src": "imgsrc"
-      }
-  ]
+  {
+    "trip_name": "Barcelona",
+    "company_id": 1,
+    "trip_link": "www.barcelona.com",
+    "trip_description": "Barcelona description"
+  },
+  {
+    "trip_name": "Greece",
+    "company_id": 2,
+    "trip_link": "www.greece.com",
+    "trip_description": "Greece description"
+  },
+  {
+    "trip_name": "Australia",
+    "company_id": 3,
+    "trip_link": "www.australia.com",
+    "trip_description": "Australia description"
+  }
+]
