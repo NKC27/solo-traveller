@@ -139,8 +139,6 @@ header .nav li:last-child {
 }
 
 img {
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
   max-width: 100%;
   max-height: 100%;
 }
