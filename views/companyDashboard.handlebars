@@ -4,12 +4,12 @@
 {{!-- @TODO add "add post" --}}
 <div class="container">
     {{#if companyAdmin}}
-<a href="/api/trip/new-trip"><button class="btn btn-primary going roboto mb-3">Add a Trip</button></a>
+<a href="/api/trip/new-trip"><button class="genBtn going roboto mb-3">Add a Trip</button></a>
 {{/if}}
 
 {{#each trips as |trip|}}
 
-  <div class="container d-flex justify-content-between p-3 p-md-3 mb-4 text-dark rounded bg-white border border-dark">
+  <div class="container d-flex justify-content-between p-3 p-md-3 mb-4 text-dark rounded bg-white red-border">
     <div class="col-6 p-3">
       <h1 class="display-4 fst-italic roboto">{{trip_name}}</h1>
       <p class="lead my-3 roboto">{{trip_description}}</p>
@@ -19,17 +19,17 @@
       {{#if ../user_id}}
    {{!-- {{#unless ../companyAdmin}} --}}
       {{!-- Going button, will be connected to api/trip/going via POST request --}}
-      <button id="going" data-id="{{trip.id}}" class="btn btn-primary going roboto">Going!</button>
+      <button id="going" data-id="{{trip.id}}" class="genBtn going roboto">Going!</button>
       {{!-- {{/unless}} --}}
       {{/if}}
       {{!-- @TODO: add conditional edit and delete --}}
 
       {{#if ../companyAdmin}}
-   <a href="/api/trip/edit/{{id}}"> <button id="edit" data-id="{{trip.id}}" class="btn btn-success roboto">Edit</button> </a>
+   <a href="/api/trip/edit/{{id}}"> <button id="edit" data-id="{{trip.id}}" class="genBtn roboto">Edit</button> </a>
     {{!-- <button id="upload" data-id="{{trip.id}}" class="btn btn-success roboto">Upload Image</button> --}}
     
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="genBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Upload Image
 </button>
 
@@ -49,14 +49,14 @@
 </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Upload</button>
+        <button type="button" class="genBtn" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="genBtn">Upload</button>
         </form>
       </div>
     </div>
   </div>
 </div>
-    <button data-id="{{trip.id}}" class="delete btn btn-danger roboto">Delete</button>
+    <button data-id="{{trip.id}}" class="delete genBtn roboto">Delete</button>
     
       {{/if}}
     </div>
