@@ -14,6 +14,10 @@ body {
   background-size: cover;
 }
 
+.circular {
+  border-radius: 20px;
+}
+
 .custom-shadow {
   box-shadow: 5px 10px rgb(253, 72, 72);
 }
@@ -216,7 +220,7 @@ img {
 }
 
 .roboto {
-  font-family: "Lovelo";
+  font-family: "Lovelo", sans-serif;
 }
 
 .genBtn {
@@ -313,15 +317,13 @@ img {
 }
 
 .img-bkGround {
-  background-image: url('/images/soloMeet.jpg');
+  background-image: url("/images/soloMeet.jpg");
   background-repeat: no-repeat;
-  background-size:cover;
-
+  background-size: cover;
 }
 
 .img-bkGround2 {
-  background-image: url('/images/soloCampFire.jpg');
+  background-image: url("/images/soloCampFire.jpg");
   background-repeat: no-repeat;
-  background-size:cover;
-
+  background-size: cover;
 }
