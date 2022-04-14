@@ -41,11 +41,15 @@
      
       <div class="row mb-2 pt-5">
     <div class="col-md-8">
-      <div class="row bg-white custom-red roboto g-0 border custom-shadow rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
+      <div class="row container bg-white custom-red roboto g-0 border custom-shadow rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        
+        <div class="col-2 m-3">
+        <img src="{{post.user.img_src}}"   alt="">
+        </div>
+        <div class="col-6 p-4 d-flex flex-column position-static">
           
           <h3 class="mb-0">{{title}}</h3>
-          <div class="mb-1 text-muted">{{date_created}}</div>
+          <div class="mb-1 text-muted">{{diffForHumans date_created}}</div>
           <p class="card-text mb-auto">{{body}}</p>
           <h3>{{post.user.user_name}}</h3>
           {{!-- <a href="/api/posts/{{id}}" class="stretched-link">Continue reading</a> --}}
@@ -71,8 +75,16 @@
        {{!-- Each starts here --}}
 
        {{#each comments as |comment|}}
-        <li class="list-group-item">{{body}}
+        <li class="list-group-item ">
+            <div class="container d-flex">
+            <div class="col-1 m-1">
+        <img src="{{comment.user.img_src}}" width="40px" height="auto"  alt="">
+        </div>
+        <div class="col-6">
+            {{body}}
         <small>{{comment.user.user_name}}</small>
+        </div>
+        </div>
         </li>
        {{/each}}
 

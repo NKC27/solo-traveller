@@ -14,7 +14,7 @@ const fs = require("fs");
 const util = require("util");
 const unlinkFile = util.promisify(fs.unlink);
 const multer = require("multer");
-const { Trip } = require("./models");
+const { Trip, User } = require("./models");
 const upload = multer({ dest: "uploads/" });
 
 const storage = multer.diskStorage({
@@ -113,6 +113,25 @@ app.post("/images/:id", upload.single("myImage"), async (req, res) => {
   // const description = req.body.description;
   Trip;
   await Trip.update(
+    { img_src: `/uploads/${result.Key}` },
+    { where: { id: req.params.id } }
+  );
+  res.status(200).render("companyDashboard");
+  // res.send({ imagePath: `/uploads/${result.Key}` });
+});
+
+// USER IMAGE UPLOAD ROUTE
+app.post("/images/user/:id", upload.single("myImage"), async (req, res) => {
+  const file = req.file;
+  console.log(file);
+
+  const result = await uploadFile(file);
+  // delete file from server once uploaded to s3
+  await unlinkFile(file.path);
+  // console.log(result);
+  // const description = req.body.description;
+  User;
+  await User.update(
     { img_src: `/uploads/${result.Key}` },
     { where: { id: req.params.id } }
   );

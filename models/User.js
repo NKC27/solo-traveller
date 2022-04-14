@@ -36,6 +36,11 @@ User.init(
         len: [8],
       },
     },
+    img_src: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "/images/user-noImage.jpg",
+    },
   },
   {
     hooks: {
