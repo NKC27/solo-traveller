@@ -30,7 +30,7 @@ router.get("/homepage", async (req, res) => {
       isOwnAdmin: req.session.isOwnAdmin,
     });
   } catch {
-    res.status(500).json(err);
+    res.status(500);
   }
 });
 
@@ -76,7 +76,7 @@ router.get("/dashboard", async (req, res) => {
       user,
     });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500);
   }
 });
 
@@ -105,7 +105,7 @@ router.get("/company-dashboard/:id", async (req, res) => {
       isOwnAdmin: true,
     });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500);
   }
 });
 
@@ -137,7 +137,7 @@ router.get("/company-dashboard", async (req, res) => {
       companyAdmin,
     });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500);
   }
 });
 
@@ -153,7 +153,7 @@ router.get("/login-form", async (req, res) => {
     }
     res.render("userLogin");
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500);
   }
 });
 
@@ -164,7 +164,7 @@ router.get("/signup-form", async (req, res) => {
     }
     res.render("userSignup");
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500);
   }
 });
 
@@ -178,7 +178,7 @@ router.get("/company-signup-form", async (req, res) => {
     }
     res.render("companySignup");
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500);
   }
 });
 
@@ -192,7 +192,7 @@ router.get("/company-login-form", async (req, res) => {
     }
     res.render("companyLogin");
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500);
   }
 });
 

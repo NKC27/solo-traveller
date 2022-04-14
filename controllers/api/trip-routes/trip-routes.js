@@ -13,7 +13,7 @@ router.get("/new-trip", companyWithAuth, async (req, res) => {
   try {
     res.status(200).render("createTrip", { logged_in: req.session.logged_in });
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500);
   }
 });
 
@@ -54,7 +54,7 @@ router.post("/create", companyWithAuth, async (req, res) => {
       .status(200)
       .render("companyDashboard", { logged_in: req.session.logged_in });
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500);
   }
 });
 
@@ -76,7 +76,7 @@ router.delete("/:id", companyWithAuth, async (req, res) => {
       .status(200)
       .render("company-dashboard", { logged_in: req.session.logged_in });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500);
   }
 });
 
@@ -122,7 +122,7 @@ router.post("/going", async (req, res) => {
     // console.log(tripUserData);
     res.status(200).json(tripUserData);
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500);
   }
 });
 
@@ -163,7 +163,7 @@ router.get("/group/:id", async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500);
   }
 });
 
@@ -227,7 +227,7 @@ router.put("/going", async (req, res) => {
       .status(200)
       .render("dashboard", { logged_in: req.session.logged_in });
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500);
   }
 });
 
@@ -242,7 +242,7 @@ router.put("/:id", async (req, res) => {
       .status(200)
       .render("company-dashboard", { logged_in: req.session.logged_in });
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500);
   }
 });
 

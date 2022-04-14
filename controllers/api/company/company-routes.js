@@ -16,7 +16,7 @@ router.post("/signup", async (req, res) => {
     });
     // res.json(companyData);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400);
   }
 });
 
@@ -45,7 +45,7 @@ router.post("/login", async (req, res) => {
       req.session.company_id = companyData.id;
       req.session.isOwnAdmin = true;
       req.session.logged_in = true;
-      res.status(200).json(companyData);
+      res.status(200);
     });
     // res
     //   .status(200)
@@ -54,7 +54,7 @@ router.post("/login", async (req, res) => {
     //     isOwnAdmin: req.session.isOwnAdmin,
     //   });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400);
   }
 });
 
