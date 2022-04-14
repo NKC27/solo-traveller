@@ -5,12 +5,21 @@
 <h1 class="m-4 text-white">Welcome {{user.user_name}}</h1>
 
 {{/if}}
+<div class="container d-flex flex-lg-row flex-column align-items-lg-start align-items-center justify-content-center">
+<div class="col-4">
+    <div class="d-flex flex-column align-items-center">
+<div class="bg-white rounded px-2 pt-2 pb-4 w-75 mx-4 mb-4"  >
+<div class="mb-2">
+    <img src="{{user.img_src}}" class="rounded" ></img>
+  </div>
+  <p class="custom-red text-center">{{user.user_name}}</p>
+  </div>
 
 <!-- Button trigger modal -->
-<button type="button" class="trip-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="trip-btn mb-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Upload a Profile Image
 </button>
-
+</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -35,25 +44,24 @@
   </div>
 </div>
 
-<div class="col-4">
-    <img src="{{user.img_src}}"></img>
-  </div>
+</div>
 
-
+<div class="col-8">
 {{#each myTrips as |trip|}}
 
-  <div class="p-4 p-md-5 mb-4 custom-red rounded bg-white container d-flex justify-content-between custom-shadow ">
+  <div class="p-3 mb-4 custom-red rounded bg-white container d-flex justify-content-between custom-shadow ">
     <div class="col-md-6 px-0">
       <h1 class="display-4 fst-italic roboto">{{trip.trip_name}}</h1>
       <p class="lead my-3 roboto">{{trip_description}}</p>
       <p class="lead mb-0"><a href="#" class="text-white fw-bold roboto">{{trip.trip_link}}</a></p>
       <p class="lead mb-0"><a href="/api/trip/group/{{id}}" class="text-white fw-bold roboto">Trip Group</a></p>
     </div>
-    <div class="col-4">
+    <div class="col-6">
     <img src="{{img_src}}"></img>
   </div>
   </div>
 
 {{/each}}
-
+</div>
+</div>
 </div>
