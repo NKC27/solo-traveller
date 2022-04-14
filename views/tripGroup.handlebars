@@ -36,29 +36,30 @@
     </div>
   </div>
 </div>
-
+<div class="container d-flex flex-column align-items-center">
 {{#each posts as |post|}}
      
-      <div class="row mb-2 pt-5">
-    <div class="col-md-8">
+      <div class="row bg-transparent">
+    <div class="col-12 bg-transparent">
       <div class="row container bg-white custom-red roboto g-0 border custom-shadow rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         
-        <div class="col-2 m-3">
+        <div class="col-2 m-3 d-flex flex-column align-items-center">
         <img src="{{post.user.img_src}}"   alt="">
+        <h3>{{post.user.user_name}}</h3>
         </div>
         <div class="col-6 p-4 d-flex flex-column position-static">
           
           <h3 class="mb-0">{{title}}</h3>
           <div class="mb-1 text-muted">{{diffForHumans date_created}}</div>
           <p class="card-text mb-auto">{{body}}</p>
-          <h3>{{post.user.user_name}}</h3>
+          
           {{!-- <a href="/api/posts/{{id}}" class="stretched-link">Continue reading</a> --}}
         </div>
    <div class="col-auto d-none d-lg-block"><title>HELLO</title>
   </div>
 <!-- Scrollable modal -->
-
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewComments{{id}}">
+<div class="p-3 d-flex justify-content-end">
+<button type="button" class="btn trip-btn " data-bs-toggle="modal" data-bs-target="#viewComments{{id}}">
   View Comments
 </button>
 
@@ -99,10 +100,10 @@
   </div>
 </div>
 
- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addComment{{id}}">
+ <button type="button" class="btn trip-btn" data-bs-toggle="modal" data-bs-target="#addComment{{id}}">
   Add a Comment
 </button>
-
+</div>
 <!-- Modal -->
 <div class="modal fade" id="addComment{{id}}"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="" aria-hidden="true">
   <div class="modal-dialog">
@@ -147,12 +148,10 @@
     </div>
   </div> --}}
 
-  </div>
-</div>
-      </div>
+    
 
 
  {{/each}}
 
-
+</div>
 <script src="/js/tripGroup.js"></script>
