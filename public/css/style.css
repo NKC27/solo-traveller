@@ -192,15 +192,16 @@ img {
 
 .nexa {
   font-size: 100px;
+  color: rgb(253, 72, 72);
 }
 
 .nexa2 {
   font-size: 25px;
-  color: #ffc107;
+  color: rgb(253, 72, 72);
 }
 
 .loghover:hover {
-  color: rgb(19, 109, 211);
+  color: rgb(253, 72, 72);
 }
 
 .btn3 {
@@ -309,4 +310,18 @@ img {
 
 .red-border {
   border: 2px solid rgb(253, 72, 72);
+}
+
+.img-bkGround {
+  background-image: url('/images/soloMeet.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+
+}
+
+.img-bkGround2 {
+  background-image: url('/images/soloCampFire.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+
 }
