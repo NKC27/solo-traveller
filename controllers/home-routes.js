@@ -17,12 +17,28 @@ router.get("/homepage", async (req, res) => {
         {
           model: Company,
         },
+        {
+          model: User,
+        },
       ],
     });
 
     // Serialize data so the template can read it
     const trips = tripData.map((trip) => trip.get({ plain: true }));
+    trips.forEach((trip) => {
+      let userIds = trip.users.map((user) => {
+        return user.id;
+      });
+      console.log("userIds");
+      console.log(userIds);
+      if (userIds.includes(req.session.user_id)) {
+        trip.userGoing = true;
+      } else {
+        trip.userGoing = false;
+      }
+    });
     console.log(trips);
+    // console.log(trips.users)
     res.render("homepage", {
       logged_in: req.session.logged_in,
       trips,
