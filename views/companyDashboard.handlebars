@@ -29,20 +29,20 @@
     {{!-- <button id="upload" data-id="{{trip.id}}" class="btn btn-success roboto">Upload Image</button> --}}
     
 <!-- Button trigger modal -->
-<button type="button" class="trip-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" class="trip-btn" data-bs-toggle="modal" data-bs-target="#imageModal{{trip.id}}">
   Upload Image
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="imageModal{{trip.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add a Trip Image</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add a Trip Image {{trip.id}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          <form action="/images/{{ id }}" method="POST" enctype="multipart/form-data" class="upload-form" data-id="{{id}}">
+          <form action="/images/{{ trip.id }}" method="POST" enctype="multipart/form-data" class="upload-form" data-id="{{id}}">
         <div class="input-group mb-3">
   <input type="file" name="myImage" class="form-control" id="image{{id}}">
   <label class="input-group-text" for="inputGroupFile02">Upload</label>
