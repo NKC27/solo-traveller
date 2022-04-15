@@ -96,15 +96,20 @@ router.get("/dashboard", async (req, res) => {
         return user.id !== req.session.user_id;
       });
     });
-
+    let noTrips;
     const userData = await User.findByPk(req.session.user_id);
     const user = userData.get({ plain: true });
-
+    if (myTrips.length === 0) {
+      noTrips = true;
+    } else {
+      noTrips = false;
+    }
     // Render user dashboard with logged_in variable and myTrips array
     return res.render("dashboard", {
       logged_in: req.session.logged_in,
       myTrips,
       user,
+      noTrips,
     });
   } catch (err) {
     res.status(500);

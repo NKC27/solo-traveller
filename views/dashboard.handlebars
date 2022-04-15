@@ -47,6 +47,10 @@
 </div>
 
 <div class="col-8">
+
+    {{#if noTrips}}
+        <h2 class="text-white">You don't have any trips!</h2>
+    {{/if}}
 {{#each myTrips as |trip|}}
 
   <div class="p-3 mb-4 custom-red rounded bg-white container d-flex justify-content-between custom-shadow ">
