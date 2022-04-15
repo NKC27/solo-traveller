@@ -11,10 +11,10 @@
 
   <div class="container d-flex justify-content-between p-3 p-md-3 my-5 custom-red rounded bg-white custom-shadow">
     <div class="col-6 p-3">
-      <h1 class="display-4 fst-italic roboto">{{trip_name}}</h1>
-      <p class="lead my-3 roboto">{{trip_description}}</p>
-      <p class="lead mb-0"><a href="#" class="text-white fw-bold roboto">{{company.user_name}}</a></p>
-        
+      <h3 class="fst-italic roboto">{{trip_name}}</h1>
+      <p class="lead my-3 roboto"><small class="text-dark">{{trip_description}}</small></p>
+      <p class="lead mb-0"><a href="#" class="custom-red fw-bold roboto"><small>{{company.user_name}}</small></a></p>
+        <small><p><a href="{{trip.trip_link}}">View this trip on {{trip.company.user_name}}</a></p></small>
 
       {{#if ../user_id}}
    {{!-- {{#unless ../companyAdmin}} --}}
