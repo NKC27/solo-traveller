@@ -32,29 +32,31 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    const validPassword = await companyData.checkPassword(req.body.password);
+    console.log(companyData);
 
+    const validPassword = companyData.checkPassword(req.body.password);
+    console.log(validPassword);
     if (!validPassword) {
       res
         .status(400)
         .json({ message: "Incorrect email or password, please try again" });
       return;
     }
-
+    console.log("hello");
     req.session.save(() => {
       req.session.company_id = companyData.id;
       req.session.isOwnAdmin = true;
       req.session.logged_in = true;
-      res.status(200);
+      res.status(200).json(companyData);
     });
-    // res
-    //   .status(200)
-    //   .render("companyDashboard", {
-    //     logged_in: req.session.logged_in,
-    //     isOwnAdmin: req.session.isOwnAdmin,
-    //   });
+    console.log(req.session);
+    res.status(200);
+    // res.status(200).render("companyDashboard", {
+    //   logged_in: req.session.logged_in,
+    //   isOwnAdmin: req.session.isOwnAdmin,
+    // });
   } catch (err) {
-    res.status(400);
+    res.status(400).json(err);
   }
 });
 
