@@ -36,7 +36,17 @@ router.get("/homepage", async (req, res) => {
       } else {
         trip.userGoing = false;
       }
+      if (userIds.length === 0) {
+        trip.noTravellers = true;
+      }
+      if (userIds.length === 1) {
+        trip.oneTraveller = true;
+      }
+      if (userIds.length > 1) {
+        trip.manyTravellers = true;
+      }
     });
+
     console.log(trips);
     // console.log(trips.users)
     res.render("homepage", {

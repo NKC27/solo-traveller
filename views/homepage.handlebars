@@ -8,7 +8,19 @@
       <h1 class="display-4 fst-italic roboto">{{trip.trip_name}}</h1>
       <p class="lead my-3 roboto">{{trip_description}}</p>
       <p class="lead mb-0"><a href="/company-dashboard/{{trip.company.id}}" class="text-black fw-bold roboto">{{trip.company.user_name}}</a></p>
-    <p class="roboto">There are {{traveller_num}} travellers going on this trip</p>
+    
+    {{#if trip.noTravellers}}
+    <p>There are currently no Solo-Travellers going on this trip</p>
+    {{/if}}
+    {{#if trip.oneTraveller}}
+      There is currently 1 Solo-Traveller going on this trip
+        {{/if}}
+    
+    {{#if trip.manyTravellers}}
+    <p class="roboto">There are currently {{traveller_num}} Solo-Travellers going on this trip</p>
+    {{/if}}
+ 
+
    
     
     
