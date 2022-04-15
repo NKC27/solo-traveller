@@ -116,7 +116,7 @@ app.post("/images/:id", upload.single("myImage"), async (req, res) => {
     { img_src: `/uploads/${result.Key}` },
     { where: { id: req.params.id } }
   );
-  res.status(200).render("companyDashboard");
+  res.status(200).redirect("/company-dashboard");
   // res.send({ imagePath: `/uploads/${result.Key}` });
 });
 
