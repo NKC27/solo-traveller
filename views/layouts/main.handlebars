@@ -83,12 +83,14 @@
                   class="navBtn"
                 >User Login</button></a>
             {{/if}}
+            {{#unless logged_in}}
             <a href="/company-login-form">
               <button
                 type="button"
                 class="navBtn"
               >Company Login</button>
             </a>
+            {{/unless}}
             {{#if isOwnAdmin}}
               <a href="/company-dashboard"><button
                   type="button"
