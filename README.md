@@ -5,6 +5,7 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Technologies and Languages](#technologies-and-languages)
 - [Contributing](#contributing)
 - [Tests](#tests)
 - [License](#license)
@@ -47,6 +48,10 @@ file: .env
 DB_NAME=solotraveller_db
 DB_USER=root
 DB_PASSWORD=
+S3_BUCKET_NAME=solo-traveller
+AWS_BUCKET_REGION=eu-west-2
+AWS_ACCESS_KEY=
+AWS_SECRET_ACCESS_KEY=
 ```
 
 <!-- AWS_BUCKET_NAME="solo-traveller"
@@ -58,31 +63,30 @@ AWS_SECRET_KEY= -->
 
 ## Usage
 
-Enter `node server.js` in terminal to start the application. Once a port has been presented in terminal then type `localhost:3001` into browser to display the application locally. Alternatively, if you wish to deploy this application on Heroku then please click here on the <!-- [Heroku Link](https://github.com/laurawalters1/solo-traveller** "Heroku Link") -->
+Enter `node server.js` in terminal to start the application. Once a port has been presented in terminal then type `localhost:3001` into browser to display the application locally. Alternatively, if you wish to deploy this application on Heroku then please use the link provided in the 'Deployed Apllication' section
 
 ---
 
-<!-- ## :hammer_and_wrench: Languages and Tools :
+## Technologies and Languages
 
 <div>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/java/java-original-wordmark.svg" title="Java" alt="Java" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original-wordmark.svg" title="React" alt="React" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/spring/spring-original-wordmark.svg" title="Spring" alt="Spring" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/materialui/materialui-original.svg" title="Material UI" alt="Material UI" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/flutter/flutter-original.svg" title="Flutter" alt="Flutter" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/redux/redux-original.svg" title="Redux" alt="Redux " width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-plain-wordmark.svg"  title="CSS3" alt="CSS" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/firebase/firebase-plain-wordmark.svg" title="Firebase" alt="Firebase" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/gatsby/gatsby-original.svg" title="Gatsby"  alt="Gatsby" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/mysql/mysql-original-wordmark.svg" title="MySQL"  alt="MySQL" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original-wordmark.svg" title="NodeJS" alt="NodeJS" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" title="AWS" alt="AWS" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/git/git-original-wordmark.svg" title="Git" **alt="Git" width="40" height="40"/>
-</div> -->
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg" title="Bootstrap" alt="Bootstrap" width="50" height="50"/>&nbsp;
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/npm/npm-original-wordmark.svg" title="npm" alt="npm" width="50" height="50"/>&nbsp;
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" title="AWS" alt="AWS" width="60" height="60"/>&nbsp;
+<img src="https://cdn.freebiesupply.com/logos/large/2x/nodemon-logo-png-transparent.png" title="Nodemon" alt="Nodemon" width="50" height="50"/>&nbsp;
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" title="NodeJS" alt="NodeJS" width="60" height="60"/>&nbsp;
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sequelize/sequelize-original.svg" title="Sequelize" alt="Sequelize UI" width="50" height="50"/>&nbsp;
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/heroku/heroku-original-wordmark.svg" title="Heroku" alt="Heroku" width="50" height="50"/>&nbsp;
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" title="MySQL"  alt="MySQL" width="60" height="60"/>&nbsp;
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/handlebars/handlebars-original.svg" title="Handlebars" alt="Handlebars" width="50" height="50"/>&nbsp;
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" title="CSS3" alt="CSS" width="50" height="50"/>&nbsp;
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" title="HTML5" alt="HTML" width="50" height="50"/>&nbsp;
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" title="JavaScript" alt="JavaScript" width="50" height="50"/>&nbsp;
+</div>
 
 ---
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=riz1ash786&layout=compact&theme=vision-friendly-dark)](https://github.com/riz1ash786/github-readme-stats)
 
 ## Contributing
 
@@ -102,7 +106,9 @@ Enter `node server.js` in terminal to start the application. Once a port has bee
 
 ## Tests
 
-No test specified as of yet.
+No tests have been specified for this application as of yet.
+
+---
 
 ## License
 
@@ -119,13 +125,15 @@ This application utilises the [ISC License](https://opensource.org/licenses/ISC 
 
 ## Deployed Application
 
-<!-- [Solo-Traveller Heroku Link](https://github.com/laurawalters1/solo-traveller** "Heroku Link") -->
+<div id="badges">
+  <!-- <a href="https://tranquil-garden-06194.herokuapp.com/"> -->
+    <img src="https://img.shields.io/badge/heroku-Solo Traveller-blue?style=for-the-badge&logo=HEROKU&logoColor=white" alt="Solo Traveller Heroku Link"/>
+  </a>
+</div>
 
 ---
 
 ## GitHub Repository
-
-<!-- [Solo-Traveller](https://github.com/laurawalters1/solo-traveller "Repository Link") -->
 
 <div id="badges">
   <a href="https://github.com/laurawalters1/solo-traveller">
@@ -141,12 +149,12 @@ If you have any additional questions then please feel free to get in touch via m
 
 <div id="badges">
   <a href="mailto:riz1ash786@gmail.com">
-    <img src="https://img.shields.io/badge/Email-RIZWAN ASHRAF-blue?style=for-the-badge&logo=&logoColor=white" alt="Rizwan Github"/>
+    <img src="https://img.shields.io/badge/EMAIL-RIZWAN ASHRAF-blue?style=for-the-badge&logo=&logoColor=white" alt="Rizwan Github"/>
+  </a> <br />
+  <a href="mailto:lauraewalters1098@gmail.com">
+    <img src="https://img.shields.io/badge/EMAIL-LAURA WALTERS-red?style=for-the-badge&logo=&logoColor=white" alt="Laura Github"/>
   </a> <br />
   <a href="mailto:riz1ash786@gmail.com">
-    <img src="https://img.shields.io/badge/Email-LAURA WALTERS-red?style=for-the-badge&logo=&logoColor=white" alt="Laura Github"/>
-  </a> <br />
-  <a href="mailto:riz1ash786@gmail.com">
-    <img src="https://img.shields.io/badge/Email-NICK CLARKE-success?style=for-the-badge&logo=&logoColor=white" alt="Nick Github"/>
+    <img src="https://img.shields.io/badge/EMAIL-NICK CLARKE-success?style=for-the-badge&logo=&logoColor=white" alt="Nick Github"/>
   </a>
 </div>
