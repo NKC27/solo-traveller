@@ -50,11 +50,10 @@ router.post("/create", companyWithAuth, async (req, res) => {
       company_id: req.session.company_id,
     });
     console.log(newTrip);
-    res
-      .status(200)
-      .render("companyDashboard", { logged_in: req.session.logged_in });
+    res.status(200).json(newTrip);
+    // .redirect("/company-dashboard", { logged_in: req.session.logged_in });
   } catch (error) {
-    res.status(500);
+    res.status(500).json(error);
   }
 });
 
@@ -240,7 +239,8 @@ router.put("/:id", async (req, res) => {
     res
       //   .json("updated")
       .status(200)
-      .render("company-dashboard", { logged_in: req.session.logged_in });
+      .json("updated");
+    // .render("companyDashboard", { logged_in: req.session.logged_in });
   } catch (error) {
     res.status(500);
   }

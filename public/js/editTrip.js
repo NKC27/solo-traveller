@@ -4,15 +4,15 @@ const updateTripFormHandler = async (event) => {
   const id = event.target.getAttribute("data-id");
   const tripName = document.querySelector("#trip-name").value.trim();
   const tripLink = document.querySelector("#trip-link").value.trim();
-  const imgSrc = document.querySelector("#img-src").value.trim();
+  const tripDescription = document.querySelector("#description").value.trim();
 
-  if (tripName && tripLink && imgSrc) {
-    const response = await fetch(`/api/trip/${id}`, {
+  if (tripName && tripLink && tripDescription) {
+    await fetch(`/api/trip/${id}`, {
       method: "PUT",
       body: JSON.stringify({
         trip_name: tripName,
         trip_link: tripLink,
-        img_src: imgSrc,
+        trip_description: tripDescription,
       }),
       headers: { "Content-Type": "application/json" },
     });
