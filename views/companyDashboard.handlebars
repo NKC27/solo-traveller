@@ -3,6 +3,9 @@
 
 {{!-- @TODO add "add post" --}}
 <div class="container p-5">
+  <h1 class="text-white">Welcome to {{user_name}}</h1>
+  <br>
+  <br>
     {{#if companyAdmin}}
 <a href="/api/trip/new-trip"><button class="genBtn going roboto mx-5 mb-3">Add a Trip</button></a>
 {{/if}}
@@ -14,7 +17,7 @@
       <h3 class="fst-italic roboto">{{trip_name}}</h1>
       <p class="lead my-3 roboto"><small class="text-dark">{{trip_description}}</small></p>
       <p class="lead mb-0"><a href="#" class="custom-red fw-bold roboto"><small>{{company.user_name}}</small></a></p>
-        <small><p><a href="{{trip.trip_link}}">View this trip on {{trip.company.user_name}}</a></p></small>
+        <small><p><a href="{{trip.trip_link}}">View this trip on <span class="text-dark">{{../user_name}}</span></a></p></small>
 
       {{#if ../user_id}}
    {{!-- {{#unless ../companyAdmin}} --}}
