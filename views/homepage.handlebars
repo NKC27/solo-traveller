@@ -7,7 +7,7 @@
     <div class="col-md-6 px-4">
       <h1 class="display-4 fst-italic roboto">{{trip.trip_name}}</h1>
       <p class="lead my-3 roboto">{{trip_description}}</p>
-      <p class="lead mb-0"><a href="/company-dashboard/{{trip.company.id}}" class="text-black fw-bold roboto">{{trip.company.user_name}}</a></p>
+      <p class="lead mb-0"><a href="/company-dashboard/{{trip.company.id}}" class="text-black fw-bold roboto"><span class="custom-red">See more trips from</span> {{trip.company.user_name}}</a></p>
     
     {{#if trip.noTravellers}}
     <p>There are currently no Solo-Travellers going on this trip</p>
@@ -20,7 +20,7 @@
     <p class="roboto">There are currently {{traveller_num}} Solo-Travellers going on this trip</p>
     {{/if}}
  
-  <p><a href="{{trip.trip_link}}">Visit {{trip.company.user_name}}</a></p>
+  <p><a href="{{trip.trip_link}}">View this trip on {{trip.company.user_name}}</a></p>
    
     
     
