@@ -10,14 +10,14 @@
       <p class="lead mb-0"><a href="/company-dashboard/{{trip.company.id}}" class="text-black  roboto"><small class="custom-red">See more trips from {{trip.company.user_name}}</small></a></p>
     
     {{#if trip.noTravellers}}
-    <p><small> are currently no Solo-Travellers going on this trip</small></p>
+    <p><small>There are currently no Solo-Travellers going on this trip</small></p>
     {{/if}}
     {{#if trip.oneTraveller}}
       <small>There is currently 1 Solo-Traveller going on this trip</small>
         {{/if}}
     
     {{#if trip.manyTravellers}}
-    <p class="roboto"><small>are currently {{traveller_num}} Solo-Travellers going on this trip</p></small> 
+    <p class="roboto"><small>There are currently {{traveller_num}} Solo-Travellers going on this trip</p></small> 
     {{/if}}
  
   <small><p><a href="{{trip.trip_link}}">View this trip on {{trip.company.user_name}}</a></p></small>

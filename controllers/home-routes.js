@@ -74,9 +74,14 @@ router.get("/dashboard", async (req, res) => {
     }
 
     const tripData = await Trip.findAll({
-      include: {
-        model: User,
-      },
+      include: [
+        {
+          model: User,
+        },
+        {
+          model: Company,
+        },
+      ],
     });
     // userTrips = array of all trips
     const userTrips = tripData.map((trip) => trip.get({ plain: true }));
