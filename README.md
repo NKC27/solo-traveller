@@ -54,16 +54,11 @@ AWS_ACCESS_KEY=
 AWS_SECRET_ACCESS_KEY=
 ```
 
-<!-- AWS_BUCKET_NAME="solo-traveller"
-AWS_BUCKET_REGION="eu-west-2"
-AWS_ACCESS_KEY="AKIA2VOHTEYX########"
-AWS_SECRET_KEY= -->
-
 ---
 
 ## Usage
 
-Enter `node server.js` in terminal to start the application. Once a port has been presented in terminal then type `localhost:3001` into browser to display the application locally. Alternatively, if you wish to deploy this application on Heroku then please use the link provided in the 'Deployed Apllication' section
+Enter `node server.js` in terminal to start the application. Once a port has been presented in terminal then type `localhost:3001` into browser to display the application locally. Alternatively, if you wish to deploy this application on Heroku then please use the link provided in the 'Deployed Application' section listed below.
 
 ---
 
@@ -119,14 +114,24 @@ This application utilises the [ISC License](https://opensource.org/licenses/ISC 
 
 ## Screenshot
 
-![my tech blog](./public/images/bg-1.jpg)
+![Homepage](./public/images/homepage.png)
+
+![Trips](./public/images/trips.png)
+
+![Comments](./public/images/comments.png)
+
+![Company Login](./public/images/company-login.png)
+
+![Create Trip](./public/images/create-trip.png)
+
+![Company Dashboard](./public/images/company-dashboard.png)
 
 ---
 
 ## Deployed Application
 
 <div id="badges">
-  <!-- <a href="https://tranquil-garden-06194.herokuapp.com/"> -->
+  <a href="https://tranquil-garden-06194.herokuapp.com/">
     <img src="https://img.shields.io/badge/heroku-Solo Traveller-blue?style=for-the-badge&logo=HEROKU&logoColor=white" alt="Solo Traveller Heroku Link"/>
   </a>
 </div>
@@ -145,7 +150,7 @@ This application utilises the [ISC License](https://opensource.org/licenses/ISC 
 
 ## Questions
 
-If you have any additional questions then please feel free to get in touch via my github or email details linked below. Thank you.
+If you have any additional questions, then please feel free to get in touch via my github or email details linked below. Thank you.
 
 <div id="badges">
   <a href="mailto:riz1ash786@gmail.com">
@@ -154,7 +159,7 @@ If you have any additional questions then please feel free to get in touch via m
   <a href="mailto:lauraewalters1098@gmail.com">
     <img src="https://img.shields.io/badge/EMAIL-LAURA WALTERS-red?style=for-the-badge&logo=&logoColor=white" alt="Laura Github"/>
   </a> <br />
-  <a href="mailto:riz1ash786@gmail.com">
+  <a href="mailto:n.clarke2785@gmail.com">
     <img src="https://img.shields.io/badge/EMAIL-NICK CLARKE-success?style=for-the-badge&logo=&logoColor=white" alt="Nick Github"/>
   </a>
 </div>
