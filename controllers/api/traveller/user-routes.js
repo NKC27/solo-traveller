@@ -43,7 +43,6 @@ router.post("/login", async (req, res) => {
       return;
     }
 
-    // @TODO Add session start functionality
     console.log(userData);
 
     req.session.save(() => {

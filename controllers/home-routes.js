@@ -29,8 +29,7 @@ router.get("/homepage", async (req, res) => {
       let userIds = trip.users.map((user) => {
         return user.id;
       });
-      console.log("userIds");
-      console.log(userIds);
+
       if (userIds.includes(req.session.user_id)) {
         trip.userGoing = true;
       } else {
